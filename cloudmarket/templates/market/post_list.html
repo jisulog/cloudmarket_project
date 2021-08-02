@@ -1,13 +1,13 @@
 {% if post_list %}
     <ul>
     {% for post in post_list %}
-        <li><a href="/pybo/{{ post.id }}/">{{ post.post_title }}</a></li>
-        <li>{{ post.image }}</li>
-        <li>{{ post.content  }}</li>
-        <li>{{ post.price }}</li>
-        <li>{{ post.create_date }}</li>
+        <li><a href="/market/{{ post.id }}/">{{ post.post_title }}</a></li>
+        {{ post.price }} <br>
+        {{ post.create_date }}<br>
     {% endfor %}
     </ul>
 {% else %}
     <p>질문이 없습니다.</p>
 {% endif %}
+
+<a href="{% url 'market:postcreate' %}" class="btn btn-primary">질문 등록하기</a>

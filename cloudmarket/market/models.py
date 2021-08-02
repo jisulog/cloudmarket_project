@@ -5,7 +5,7 @@ from django.db import models
 # 게시글 모델 - 박지수
 class Post(models.Model):
     post_title = models.CharField(max_length=50)
-    image = models.ImageField()
+    image = models.ImageField(upload_to='img/', max_length=300)
     content = models.TextField()
     price = models.IntegerField()
     create_date = models.DateTimeField()
