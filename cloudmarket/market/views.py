@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.views.generic import ListView
+from market.models import Post
 
 # Create your views here.
+# CBV(Class Based View) 사용하기
 
-from django.http import HttpResponse
-
-
-def index(request):
-    return HttpResponse("안녕하세요 cloud market 페이지 입니다.")
+class PostList(ListView):
+    paginate_by = 10
+    def get_queryset(self):
+        return Post.objects.order_by('-create_date')

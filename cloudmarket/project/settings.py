@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -37,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'market.apps.MarketConfig',
+    'market.apps.MarketConfig', # market app 추가 - 박지수
 ]
 
 MIDDLEWARE = [
@@ -55,6 +56,7 @@ ROOT_URLCONF = 'project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        # 템플릿 디렉터리 추가 - 박지수
         'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -122,9 +124,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
+# 정적 파일 경로 추가 - 박지수
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
