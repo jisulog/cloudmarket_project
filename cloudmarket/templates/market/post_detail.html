@@ -16,6 +16,9 @@
 
 <hr>
 
-<a href="{% url 'market:postupdate' post.id  %}">수정</a>
-<a href="{% url 'market:postdelete' post.id  %}">삭제</a>
+<form action="#" method="POST">
+    {% csrf_token %}
+    <button>삭제</button>
+  </form>
+  <a href="#">수정</a>
 {% endblock %}
