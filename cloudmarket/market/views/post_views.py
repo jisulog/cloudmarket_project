@@ -8,7 +8,7 @@ from django.utils import timezone
 # CBV(Class Based View) 사용하기
 
 class PostList(ListView):
-    paginate_by = 10
+    paginate_by = 6
     def get_queryset(self):
         return Post.objects.order_by('-create_date')
 
