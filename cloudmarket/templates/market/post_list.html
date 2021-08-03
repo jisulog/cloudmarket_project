@@ -1,7 +1,7 @@
 {% if post_list %}
     <ul>
     {% for post in post_list %}
-        <li><a href="/pybo/{{ post.id }}/">{{ post.post_title }}</a></li>
+        <li><a href="{% url 'market:detail' post.id %}">{{ post.post_title }}</a></li>
         <li>{{ post.image }}</li>
         <li>{{ post.content  }}</li>
         <li>{{ post.price }}</li>
@@ -9,5 +9,5 @@
     {% endfor %}
     </ul>
 {% else %}
-    <p>질문이 없습니다.</p>
+    <p>게시글이 없습니다.</p>
 {% endif %}
