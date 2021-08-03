@@ -1,7 +1,11 @@
 <h1>{{ post.post_title }}</h1>
 {{post.create_date}}
 <div>
-    <img src = "{% media.url }}"><br>
+    <img src = "{{ post.image.url }}" ><br>
     {{ post.content }}<br>
-    {{ post.price }}
+    {{ post.price }}<br>
+
+    <a href="{% url 'market:postupdate' post.id  %}">수정</a>
+    <a href="{% url 'market:postdelete' post.id  %}">삭제</a>
+
 </div>
