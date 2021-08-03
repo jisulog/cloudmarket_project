@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'market.apps.MarketConfig', # market app 추가 - 박지수
+    'imagekit' # resize
 ]
 
 MIDDLEWARE = [
