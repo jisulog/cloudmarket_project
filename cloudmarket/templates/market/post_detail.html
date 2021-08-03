@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h3>{{ post.post_title }}</h3>
+{{post.create_date}}
+<div>
+    {% if post.image %}
+    <img src = "{{ post.image.url }}" alt="{{ post.image }}" height="300" width="500">
+    {% else %}
+    <p>이미지가 없습니다</p>
+    {% endif %}
+    <p>{{ post.content }}</p>
+    <p>{{ post.price }}</p>
+</div>
+
+<hr>
+
+<form action="#" method="POST">
+    {% csrf_token %}
+    <button>삭제</button>
+  </form>
+  <a href="#">수정</a>
+{% endblock %}
