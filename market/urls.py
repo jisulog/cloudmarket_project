@@ -17,5 +17,4 @@ urlpatterns = [
     path('<int:pk>/', post_views.PostDetail.as_view(), name = 'postdetail' ),
     path('update/<int:pk>/', post_views.PostUpdate.as_view(), name='postupdate'),
     path('delete/<int:pk>/', post_views.PostDelete.as_view(), name='postdelete'),
-    #path('comment/create/<int:post_id>/', views.comment_create, name='comment_create'),
 ]

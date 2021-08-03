@@ -121,13 +121,13 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
+LOGIN_REDIRECT_URL = '/'
+
+# 로그아웃시 이동하는 URL
+LOGOUT_REDIRECT_URL = '/'
 # 기본키 정의 - 박지수
 DEFAULT_AUTO_FIELD= 'django.db.models.AutoField'
 
 # 이미지 경로 추가 - 박지수
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-LOGIN_REDIRECT_URL = '/'
-
-# 로그아웃시 이동하는 URL
-LOGOUT_REDIRECT_URL = '/'
