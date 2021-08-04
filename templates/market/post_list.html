@@ -14,6 +14,8 @@
                 <p>이미지가 없습니다</p>
                 {% endif %}
                 <ol><a href="/market/{{ post.id }}/">{{ post.post_title }}</a></ol> 
+                <ol>{{ post.user_id }}</ol>
+                <ol>{{ post.user_name  }}</ol>
                 <ol>{{ post.price }}원</ol>
                 <ol>{{ post.create_date }}</ol>
             </ul>
@@ -62,5 +64,5 @@
     </ul>
     <!-- 페이징처리 끝/작성 버튼 -->
 
-    <a href="{% url 'market:postcreate' %}">작성</a>
+    <a href="{% url 'market:postcreate' %}" {% if not user.is_authenticated %}hidden{% endif %}>작성</a>
 {% endblock %}

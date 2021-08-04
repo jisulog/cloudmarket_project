@@ -1,7 +1,6 @@
-from django.contrib.auth import authenticate, login
-from django.shortcuts import render, redirect
 from common.forms import UserForm
 from django.views.generic.edit import CreateView
+from django.contrib.auth import authenticate, login
 from django.urls import reverse_lazy
 
 class CreateUserView(CreateView):  # 제네릭의 CreateView는 폼하고 연결돼서, 혹은 모델하고 연결돼서 새로운 데이터를 넣을 때 사용.
@@ -9,6 +8,14 @@ class CreateUserView(CreateView):  # 제네릭의 CreateView는 폼하고 연결
     form_class = UserForm
     success_url = reverse_lazy('market:postlist') # 성공하면 어디로 갈지, create_user_done은 url name
     # 여기서 reverse가 아닌 reverse_lazy를 사용하는 이유: 제네릭뷰 같은경우 타이밍 문제 때문에 reverse_lazy를 사용해야함
+
+    def form_valid(self, form):
+        form.save()
+        username = form.cleaned_data.get('username')
+        raw_password = form.cleaned_data.get('password1')
+        user = authenticate(username=username, password=raw_password)  # 사용자 인증
+        login(self.request, user)  # 로그인
+        return super().form_valid(form)
 
 
 '''
