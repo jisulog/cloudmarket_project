@@ -1,3 +1,6 @@
+{% extends 'base.html' %}
+
+{% block content %}
 <div class="container">
   <h5 class="my-3 border-bottom pb-2">게시글 등록</h5>
   <form method="post" class="post-form my-3" enctype="multipart/form-data" action=".">
@@ -7,3 +10,4 @@
   </form>
   <input type="button" value="취소하기" onclick="history.back(-1);">
 </div>
+{% endblock %}

@@ -9,15 +9,18 @@ from django.urls import reverse_lazy
 # Create your views here.
 # CBV(Class Based View) 사용하기
 
-class PostList(ListView):
+class List(ListView):
     paginate_by = 6
     def get_queryset(self):
         return Post.objects.order_by('-create_date')
 
+class Detail(DetailView):
+    model = Post
+
 class PostCreate(CreateView):
     form_class = PostForm
     template_name = 'market/post_create.html'
-    success_url = reverse_lazy('market:postdetail')
+    success_url = reverse_lazy('market:detail')
 
     def form_valid(self, form):
         post = form.save(False)
@@ -26,15 +29,12 @@ class PostCreate(CreateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse_lazy('market:postdetail', kwargs={'pk':self.object.pk})
-
-class PostDetail(DetailView):
-    model = Post
+        return reverse_lazy('market:detail', kwargs={'pk':self.object.pk})
 
 class PostUpdate(UpdateView):
     form_class = PostForm
     template_name = 'market/post_update.html'
-    success_url = reverse_lazy('market:postdetail')
+    success_url = reverse_lazy('market:detail')
 
     def get_object(self):
         post = get_object_or_404(Post, pk=self.kwargs['pk'])
@@ -43,7 +43,7 @@ class PostUpdate(UpdateView):
         return post
 
     def get_success_url(self):
-        return reverse_lazy('market:postdetail', kwargs={'pk':self.object.pk})
+        return reverse_lazy('market:detail', kwargs={'pk':self.object.pk})
 
 
 class PostDelete(DeleteView):

@@ -23,7 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # market app url 추가 - 박지수
     path('market/', include('market.urls')),
-    path('', post_views.PostList.as_view(), name='postlist'),
+    path('', post_views.List.as_view(), name='list'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

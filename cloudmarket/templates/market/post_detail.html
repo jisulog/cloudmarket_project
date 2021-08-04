@@ -1,9 +1,20 @@
 {% extends 'base.html' %}
 
+
 {% block content %}
 
 <h3>{{ post.post_title }}</h3>
-{{post.create_date}}
+<div class="d-flex justify-content-end">
+{% if post.modify_date %}
+  <div class="badge badge-light p-2 text-left mx-3">
+      <div class="mb-2">modified at</div>
+      <div>{{ post.modify_date }}</div>
+  </div>
+{% endif %}
+  <div class="badge badge-light p-2">
+      {{ post.create_date }}
+  </div>
+
 <div>
     {% if post.image %}
     <img src = "{{ post.image.url }}" alt="{{ post.image }}">
@@ -17,6 +28,9 @@
 
 <hr>
 
+<div>
 <a href="{% url 'market:postupdate' post.id  %}">수정</a>
 <a href="{% url 'market:postdelete' post.id  %}">삭제</a>
+</div>
+
 {% endblock %}
