@@ -24,6 +24,7 @@ class PostCreate(CreateView):
 
     def form_valid(self, form):
         post = form.save(False)
+        post.user_id = self.request.user
         post.create_date = timezone.now()
         post.save()
         return super().form_valid(form)
