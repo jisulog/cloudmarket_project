@@ -13,7 +13,16 @@
 </div>
 {% endif %}
 <h3>{{ post.post_title }}</h3>
-{{post.create_date}}
+{{ post.user_id.last_name }}<br>
+{% if post.modify_date %}
+<div class="badge badge-light p-2 text-left mx-3">
+    <div>{{ post.modify_date }}</div>
+</div>
+{% else %}
+<div class="badge badge-light p-2 text-left mx-3">
+    <div>{{ post.create_date }}</div>
+</div>
+{% endif %}
 <div>
     {% if post.image %}
     <img src="{{ post.image.url }}" alt="{{ post.image }}">
@@ -26,7 +35,8 @@
 </div>
 
 <hr>
-
+{% if request.user == post.user_id %}
 <a href="{% url 'market:postupdate' post.id  %}">수정</a>
 <a href="{% url 'market:postdelete' post.id  %}">삭제</a>
+{% endif %}
 {% endblock %}

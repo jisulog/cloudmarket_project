@@ -4,6 +4,7 @@ from market.models import Post
 from market.forms import PostForm
 from django.utils import timezone
 from django.urls import reverse_lazy
+from django.contrib import messages
 
 # Create your views here.
 # CBV(Class Based View) 사용하기
@@ -17,7 +18,6 @@ class PostCreate(CreateView):
     form_class = PostForm
     template_name = 'market/post_create.html'
     success_url = reverse_lazy('market:postdetail')
-
 
     def form_valid(self, form):
         post = form.save(commit=False)
@@ -39,6 +39,9 @@ class PostUpdate(UpdateView):
 
     def get_object(self):
         post = get_object_or_404(Post, pk=self.kwargs['pk'])
+        if self.request.user != post.user_id:
+            messages.error(self.request, '수정권한이 없습니다')
+            return reverse_lazy('market:postlist')
         post.modify_date = timezone.now()
         post.save()
         return post
@@ -53,9 +56,6 @@ class PostDelete(DeleteView):
 
     def get(self, request, *args, **kwargs):
         return self.post(request, *args, **kwargs)
-
-
-
 
 
 
