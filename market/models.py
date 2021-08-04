@@ -19,7 +19,7 @@ class User(models.Model):
 
 # 게시글 모델 - 박지수
 class Post(models.Model):
-    used_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name='userid_post')
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name='userid_post')
     user_name = models.ForeignKey(User, on_delete=models.CASCADE, related_name='username_post')
     post_title = models.CharField(max_length=50)
     image = models.ImageField(upload_to='img/', max_length=300)
@@ -34,7 +34,7 @@ class Post(models.Model):
 # 댓글 모델 - 박지수
 class Comment(models.Model):
     post_id = models.ForeignKey(Post, on_delete=models.CASCADE)
-    used_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name='userid_comment', null=True)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name='userid_comment', null=True)
     user_name = models.ForeignKey(User, on_delete=models.CASCADE, related_name='username_comment')
     content = models.TextField()
     create_date = models.DateTimeField()
