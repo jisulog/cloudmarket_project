@@ -2,37 +2,37 @@
 
 {% block content %}
 <!--리스트창-->
-<h2>POST LIST</h2>
-{% if page_obj %}
-{% for post in page_obj %}
+ <h2>POST LIST</h2>
+    {% if page_obj %}
+        {% for post in page_obj %}
 
-<ul>
-    {% if post.image %}
-    <img src="{{ post.image.url }}" alt="{{ post.image }}">
-    <!--resize height="300" width="500"-->
+            <ul>
+                {% if post.image %}
+                <img src = "{{ post.image.url }}" alt="{{ post.image }}"> 
+                <!--resize height="300" width="500"-->
+                {% else %}
+                <p>이미지가 없습니다</p>
+                {% endif %}
+                <ol><a href="/market/{{ post.id }}/">{{ post.post_title }}</a></ol> 
+                <ol>{{ post.user_id.last_name }} </ol>
+                <ol>{{ post.price }}원</ol>
+                <ol>
+                    {% if post.modify_date %}
+                    <div class="badge badge-light p-2 text-left mx-3">
+                        <div>{{ post.modify_date }}(수정)</div>
+                    </div>
+                    {% else %}
+                    <div class="badge badge-light p-2 text-left mx-3">
+                        <div>{{ post.create_date }}</div>
+                    </div>
+                    {% endif %}
+                </ol>
+            </ul>
+        {% endfor %}
+
     {% else %}
-    <p>이미지가 없습니다</p>
+        <p>게시글이 없습니다.</p>
     {% endif %}
-    <ol><a href="/market/{{ post.id }}/">{{ post.post_title }}</a></ol>
-    <ol>{{ post.user_id.last_name }} </ol>
-    <ol>{{ post.price }}원</ol>
-    <ol>
-        {% if post.modify_date %}
-        <div class="badge badge-light p-2 text-left mx-3">
-            <div>{{ post.modify_date }}(수정)</div>
-        </div>
-        {% else %}
-        <div class="badge badge-light p-2 text-left mx-3">
-            <div>{{ post.create_date }}</div>
-        </div>
-        {% endif %}
-    </ol>
-</ul>
-{% endfor %}
-
-{% else %}
-<p>게시글이 없습니다.</p>
-{% endif %}
 
 <!-- 페이징처리 시작 -->
 <ul class="pagination justify-content-center">

@@ -17,6 +17,9 @@ class PostList(ListView):
     def get_queryset(self):
         return Post.objects.order_by('-create_date')
 
+class PostDetail(DetailView):
+    model = Post
+
 class PostCreate(CreateView):
     form_class = PostForm
     template_name = 'market/post_create.html'
@@ -31,9 +34,6 @@ class PostCreate(CreateView):
 
     def get_success_url(self):
         return reverse_lazy('market:postdetail', kwargs={'pk':self.object.pk})
-
-class PostDetail(DetailView):
-    model = Post
 
 class PostUpdate(UpdateView):
     form_class = PostForm

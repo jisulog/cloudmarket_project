@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+
 {% block content %}
 <!-- 사용자오류 표시 -->
 {% if messages %}
@@ -13,16 +14,17 @@
 </div>
 {% endif %}
 <h3>{{ post.post_title }}</h3>
+
 {{ post.user_id.last_name }}<br>
-{% if post.modify_date %}
-<div class="badge badge-light p-2 text-left mx-3">
-    <div>{{ post.modify_date }}(수정)</div>
-</div>
-{% else %}
-<div class="badge badge-light p-2 text-left mx-3">
-    <div>{{ post.create_date }}</div>
-</div>
-{% endif %}
+    {% if post.modify_date %}
+    <div class="badge badge-light p-2 text-left mx-3">
+        <div>{{ post.modify_date }}(수정)</div>
+    </div>
+    {% else %}
+    <div class="badge badge-light p-2 text-left mx-3">
+        <div>{{ post.create_date }}</div>
+    </div>
+    {% endif %}
 <div>
     {% if post.image %}
     <img src="{{ post.image.url }}" alt="{{ post.image }}">
@@ -31,12 +33,19 @@
     <p>이미지가 없습니다</p>
     {% endif %}
     <p>{{ post.content }}</p>
-    <p>{{ post.price }}</p>
+    <p>{{ post.price }}원</p>
 </div>
 
 <hr>
+
+<div>
 {% if request.user == post.user_id %}
 <a href="{% url 'market:postupdate' post.id  %}">수정</a>
 <a href="{% url 'market:postdelete' post.id  %}">삭제</a>
 {% endif %}
+</div>
+
+
+    
+
 {% endblock %}
