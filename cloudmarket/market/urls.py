@@ -26,8 +26,8 @@ app_name = 'market'
 
 urlpatterns = [
 
-    path('', post_views.List.as_view(), name='list'),
-    path('<int:pk>/', post_views.Detail.as_view(), name = 'detail' ),
+    path('', post_views.PostList.as_view(), name='postlist'),
+    path('<int:pk>/', post_views.PostDetail.as_view(), name = 'postdetail' ),
 
     path('post/create/', post_views.PostCreate.as_view(), name = 'postcreate' ),
     path('post/update/<int:pk>/', post_views.PostUpdate.as_view(), name='postupdate'),
