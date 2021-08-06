@@ -84,7 +84,7 @@
 
 <a href="{% url 'market:postcreate' %}" {% if not user.is_authenticated %}hidden{% endif %}>작성</a>
 
-<!-- 검색 폼 -->
+<!-- 검색 폼  -->
 <form id="searchForm" method="get" action="{% url 'market:postlist' %}">
     <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
     <input type="hidden" id="page" name="page" value="{{ page }}">
