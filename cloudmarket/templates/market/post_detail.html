@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+
 {% block content %}
 <h3>{{ post.post_title }}</h3>
 {{ post.user_id.last_name }}<br>
@@ -34,8 +35,9 @@
 <div>
     <h5>{{post.comment_set.count}}개의 댓글이 있습니다.</h5>
     <div>
-        <ul>
+        
             {% for comment in post.comment_set.all %}
+        <ul>
             <li>{{ comment.user_id.last_name }}
 
             <div class="d-flex justify-content-end"></div>
@@ -49,17 +51,17 @@
             </div>
 
             <li>{{ comment.content }}</li>
-
-        
-            {% endfor %}
         </ul>
-    </div>
-            {% if request.user == comment.user_id %}
-            <div class="my-3">
-                <a href="{% url 'market:commentupdate' comment.id  %}">수정</a>
-                <a href="{% url 'market:commentdelete' comment.id  %}">삭제</a>
+            <div>
+                {% if request.user == comment.user_id %}
+                    <a href="{% url 'market:commentupdate' comment.id  %}">수정</a>
+                    <a href="{% url 'market:commentdelete' comment.id  %}">삭제</a>
+                {% endif %}
             </div>
-            {% endif %}
+            {% endfor %}
+        
+    </div>
+            
 
     <form action="{% url 'market:commentcreate' post.id  %}" method="post" {% if not user.is_authenticated %}hidden{% endif %}>
         {% csrf_token %}
