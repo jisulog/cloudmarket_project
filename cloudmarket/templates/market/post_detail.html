@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends 'base.html' %}
 {% block script %}
   <script type='text/javascript'>
@@ -11,30 +12,21 @@
   </script>
 {% endblock %}
 
+=======
+{% extends "base.html" %}
+>>>>>>> develop
 {% block content %}
-<!-- 사용자오류 표시 -->
-{% if messages %}
-<div class="alert alert-danger my-3" role="alert">
-    {% for message in messages %}
-    <strong>{{ message.tags }}</strong>
-    <ul>
-        <li>{{ message.message }}</li>
-    </ul>
-    {% endfor %}
+<h3>{{ post.post_title }}</h3>
+{{ post.user_id.last_name }}<br>
+{% if post.modify_date %}
+<div class="badge badge-light p-2 text-left mx-3">
+    <div>{{ post.modify_date }}(수정)</div>
+</div>
+{% else %}
+<div class="badge badge-light p-2 text-left mx-3">
+    <div>{{ post.create_date }}</div>
 </div>
 {% endif %}
-<h3>{{ post.post_title }}</h3>
-
-{{ post.user_id.last_name }}<br>
-    {% if post.modify_date %}
-    <div class="badge badge-light p-2 text-left mx-3">
-        <div>{{ post.modify_date }}(수정)</div>
-    </div>
-    {% else %}
-    <div class="badge badge-light p-2 text-left mx-3">
-        <div>{{ post.create_date }}</div>
-    </div>
-    {% endif %}
 <div>
     {% if post.image %}
     <img src="{{ post.image.url }}" alt="{{ post.image }}">
@@ -46,8 +38,6 @@
     <p>{{ post.price }}원</p>
 </div>
 
-<hr>
-
 <div>
 {% if request.user == post.user_id %}
 <a href="{% url 'market:postupdate' post.id  %}">수정</a>
@@ -58,20 +48,27 @@
 
 <div>
     <h5>{{post.comment_set.count}}개의 댓글이 있습니다.</h5>
-    {% for comment in post.comment_set.all %}
-    <div class="card my-3">
-        <div class="card-body">
-            <div class="card-text" style="white-space: pre-line;">{{ comment.content }}</div>
-            <div class="d-flex justify-content-end">
-                {% if comment.modify_date %}
-                <div class="badge badge-light p-2 text-left mx-3">
-                    <div>{{ comment.modify_date }}(수정)</div>
-                </div>
-                {% endif %}
-                <div class="badge badge-light p-2">
-                    {{ comment.create_date }}
-                </div>
+    <div>
+        <ul>
+            {% for comment in post.comment_set.all %}
+            <ol>{{ comment.user_id.last_name }}</ol>
+
+            <div class="d-flex justify-content-end"></div>
+            {% if comment.modify_date %}
+            <div class="badge badge-light p-2 text-left mx-3">
+                <div>{{ comment.modify_date }}(수정)</div>
             </div>
+            {% endif %}
+            <div class="badge badge-light p-2">
+                {{ comment.create_date }}
+            </div>
+
+            <ol>{{ comment.content }}</ol>
+            <ol>{{ comment.post_id }}</ol>
+        
+            {% endfor %}
+        </ul>
+    </div>
         
             {% if request.user == comment.user_id %}
             <div class="my-3">
@@ -80,19 +77,16 @@
                 data-uri="{% url 'market:commentdelete' comment.id  %}">삭제</a>
             </div>
             {% endif %}
-        </div>
-    </div>
+
+
     {% endfor %}
-    <form action="{% url 'market:commentcreate' post.id %}" method="post" class="my-3">
+    <form action="{% url 'market:commentcreate' post.id  %}" method="post" {% if not user.is_authenticated %}hidden{% endif %}>
         {% csrf_token %}
-        <div class="form-group">
-          {% if not user.is_authenticated%} disabled {% endif %}
-            <textarea 
-              name="content" id="content" class="form-control" rows="10"></textarea>
-        </div>
-        <input type="submit" value="댓글 등록" class="btn btn-primary">
+        {% include "form_errors.html" %}
+        <textarea name="content" id="content" rows="5" value="{{ form.username.value|default_if_none:'' }}" required></textarea>
+        <input type="submit" value="댓글 등록">
     </form>
+
 </div>
-    
 
 {% endblock %}

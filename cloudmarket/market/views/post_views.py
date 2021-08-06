@@ -26,7 +26,7 @@ class PostCreate(CreateView):
     success_url = reverse_lazy('market:postdetail')
 
     def form_valid(self, form):
-        post = form.save(False)
+        post = form.save(commit=False)
         post.user_id = self.request.user
         post.create_date = timezone.now()
         post.save()

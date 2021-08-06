@@ -33,7 +33,7 @@ urlpatterns = [
     path('post/update/<int:pk>/', post_views.PostUpdate.as_view(), name='postupdate'),
     path('post/delete/<int:pk>/', post_views.PostDelete.as_view(), name='postdelete'),
 
-    path('comment/create/', comment_views.CommentCreate.as_view(), name = 'commentcreate' ),
+    path('comment/create/<int:pk>/', comment_views.CommentCreate.as_view(), name='commentcreate'),
     path('comment/update/<int:pk>/', comment_views.CommentUpdate.as_view(), name='commentupdate'),
     path('comment/delete/<int:pk>/', comment_views.CommentDelete.as_view(), name='commentdelete'),
 ]
