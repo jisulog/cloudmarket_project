@@ -1,20 +1,5 @@
-<<<<<<< HEAD
 {% extends 'base.html' %}
-{% block script %}
-  <script type='text/javascript'>
-    $(document).ready(function(){
-        $(".delete").on('click', function() {  // 클래스값이 delete인 엘리먼트가 눌리면
-            if(confirm("정말로 삭제하시겠습니까?")) {  // 확인 창이 열림
-                location.href = $(this).data('uri');  // data-uri 속성값으로 URL 호출
-            }
-        });
-    });
-  </script>
-{% endblock %}
 
-=======
-{% extends "base.html" %}
->>>>>>> develop
 {% block content %}
 <h3>{{ post.post_title }}</h3>
 {{ post.user_id.last_name }}<br>
@@ -41,7 +26,7 @@
 <div>
 {% if request.user == post.user_id %}
 <a href="{% url 'market:postupdate' post.id  %}">수정</a>
-<a href="#" data-uri="{% url 'market:postdelete' post.id  %}">삭제</a>
+<a href="{% url 'market:postdelete' post.id  %}">삭제</a>
 {% endif %}
 </div>
 
@@ -51,7 +36,7 @@
     <div>
         <ul>
             {% for comment in post.comment_set.all %}
-            <ol>{{ comment.user_id.last_name }}</ol>
+            <li>{{ comment.user_id.last_name }}
 
             <div class="d-flex justify-content-end"></div>
             {% if comment.modify_date %}
@@ -60,26 +45,22 @@
             </div>
             {% endif %}
             <div class="badge badge-light p-2">
-                {{ comment.create_date }}
+                {{ comment.create_date }} </li>
             </div>
 
-            <ol>{{ comment.content }}</ol>
-            <ol>{{ comment.post_id }}</ol>
+            <li>{{ comment.content }}</li>
+
         
             {% endfor %}
         </ul>
     </div>
-        
             {% if request.user == comment.user_id %}
             <div class="my-3">
                 <a href="{% url 'market:commentupdate' comment.id  %}">수정</a>
-                <a href="#" class="delete btn btn-sm btn-outline-secondary "
-                data-uri="{% url 'market:commentdelete' comment.id  %}">삭제</a>
+                <a href="{% url 'market:commentdelete' comment.id  %}">삭제</a>
             </div>
             {% endif %}
 
-
-    {% endfor %}
     <form action="{% url 'market:commentcreate' post.id  %}" method="post" {% if not user.is_authenticated %}hidden{% endif %}>
         {% csrf_token %}
         {% include "form_errors.html" %}
