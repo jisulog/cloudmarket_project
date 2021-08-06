@@ -1,6 +1,5 @@
 from common.forms import UserForm
 from django.views.generic.edit import CreateView
-from django.contrib.auth import authenticate, login
 from django.urls import reverse_lazy
 
 class CreateUserView(CreateView):  # 제네릭의 CreateView는 폼하고 연결돼서, 혹은 모델하고 연결돼서 새로운 데이터를 넣을 때 사용.
