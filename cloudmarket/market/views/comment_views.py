@@ -35,4 +35,11 @@ class CommentUpdate(UpdateView):
 
 
 class CommentDelete(DeleteView):
-    pass
+    model = Comment
+    success_url = '/'
+    
+    def get(self, request, *args, **kwargs):
+        return self.post(request, *args, **kwargs)
+
+    def get_success_url(self):
+        return reverse_lazy('market:postdetail', kwargs={'pk':self.object.post_id.pk}) 
