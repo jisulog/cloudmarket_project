@@ -14,11 +14,11 @@ class CommentCreate(CreateView):
     template_name = 'market/comment_create.html'
     success_url = reverse_lazy('market:postdetail')
 
-    def form_valid(self, post, form):
-        post = get_object_or_404(Post, pk=post_id)
+    def form_valid(self, form):
+        comment.post_id = get_object_or_404(Post, pk=self.kwargs['pk'])
         comment = form.save(False)
+        comment.user_id = self.request.user
         comment.create_date = timezone.now()
-        comment.post = post
         comment.save()
         return super().form_valid(form)
     

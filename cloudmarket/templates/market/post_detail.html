@@ -1,5 +1,15 @@
 {% extends 'base.html' %}
-
+{% block script %}
+  <script type='text/javascript'>
+    $(document).ready(function(){
+        $(".delete").on('click', function() {  // 클래스값이 delete인 엘리먼트가 눌리면
+            if(confirm("정말로 삭제하시겠습니까?")) {  // 확인 창이 열림
+                location.href = $(this).data('uri');  // data-uri 속성값으로 URL 호출
+            }
+        });
+    });
+  </script>
+{% endblock %}
 
 {% block content %}
 <!-- 사용자오류 표시 -->
@@ -41,11 +51,48 @@
 <div>
 {% if request.user == post.user_id %}
 <a href="{% url 'market:postupdate' post.id  %}">수정</a>
-<a href="{% url 'market:postdelete' post.id  %}">삭제</a>
+<a href="#" data-uri="{% url 'market:postdelete' post.id  %}">삭제</a>
 {% endif %}
 </div>
 
 
+<div>
+    <h5>{{post.comment_set.count}}개의 댓글이 있습니다.</h5>
+    {% for comment in post.comment_set.all %}
+    <div class="card my-3">
+        <div class="card-body">
+            <div class="card-text" style="white-space: pre-line;">{{ comment.content }}</div>
+            <div class="d-flex justify-content-end">
+                {% if comment.modify_date %}
+                <div class="badge badge-light p-2 text-left mx-3">
+                    <div>{{ comment.modify_date }}(수정)</div>
+                </div>
+                {% endif %}
+                <div class="badge badge-light p-2">
+                    {{ comment.create_date }}
+                </div>
+            </div>
+        
+            {% if request.user == comment.user_id %}
+            <div class="my-3">
+                <a href="{% url 'market:commentupdate' comment.id  %}">수정</a>
+                <a href="#" class="delete btn btn-sm btn-outline-secondary "
+                data-uri="{% url 'market:commentdelete' comment.id  %}">삭제</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+    <form action="{% url 'market:commentcreate' post.id %}" method="post" class="my-3">
+        {% csrf_token %}
+        <div class="form-group">
+          {% if not user.is_authenticated%} disabled {% endif %}
+            <textarea 
+              name="content" id="content" class="form-control" rows="10"></textarea>
+        </div>
+        <input type="submit" value="댓글 등록" class="btn btn-primary">
+    </form>
+</div>
     
 
 {% endblock %}
