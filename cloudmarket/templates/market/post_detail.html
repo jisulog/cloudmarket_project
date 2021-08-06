@@ -35,7 +35,22 @@
 <div>
     <ul>
         {% for comment in post.comment_set.all %}
-        <li>{{ comment.user_id.last_name }}, {{ comment.content }}, {{ comment.post_id }}</li>
+        <br>
+        <div>
+            
+            {{ comment.user_id.last_name }}, {{ comment.content }}<br>
+
+            {% if comment.moify_date %}
+                <div>{{ comment.modify_date }}(수정)</div>
+            {% else %}
+                <div>{{ comment.create_date }}</div>
+            {% endif %}
+
+            {% if request.user == comment.user_id %}
+            <a href="{% url 'market:commentupdate' comment.id  %}">수정</a>
+            <a href="{% url 'market:commentdelete' comment.id  %}">삭제</a>
+            {% endif %}
+        </div>
         {% endfor %}
     </ul>
 </div>
