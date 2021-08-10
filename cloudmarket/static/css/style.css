@@ -1,0 +1,6 @@
+.imglist { 
+    width: 100px; 
+    height: 100px; 
+    object-fit: cover; /* 아래에서 다룰 속성값 */ 
+    border: 1px solid #000 /* 요소의 크기를 가늠하기위해 추가 */ 
+}
