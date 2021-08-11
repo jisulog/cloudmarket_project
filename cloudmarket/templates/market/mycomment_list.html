@@ -31,7 +31,7 @@ right:30px; top:60px;">
     {% for comment in page_obj %}
 
         <ul>
-            <ol><a href="{% url 'market:postdetail' comment.post_id.id  %}/">{{ comment.content }}</a></ol> 
+            <ol><a href="{% url 'market:postdetail' comment.post_id.id  %}">{{ comment.content }}</a></ol> 
             <ol>{{ comment.user_id.last_name }} </ol>
             <ol>
                 {% if comment.modify_date %}
