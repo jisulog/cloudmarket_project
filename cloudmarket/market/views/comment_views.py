@@ -25,13 +25,8 @@ class CommentCreate(CreateView):
         return super().form_valid(form)
     
     def get_success_url(self):
-        return reverse_lazy('market:postdetail', kwargs={'pk':self.object.post_id.pk}) 
-    
-    # def commentcreate(request, post_id):
-    #     post = get_object_or_404(Post, pk=post_id)
-    #     post.comment_set.create(content=request.POST.get('content'), create_date=timezone.now())
-    #     return redirect('market:postdetail', pk=post_id)
-    
+        return reverse_lazy('market:postdetail', kwargs={'pk':self.object.post_id.pk})   
+
 
 class CommentUpdate(UpdateView):
     pass
