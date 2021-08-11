@@ -6,7 +6,26 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = ['post_title', 'image', 'content', 'price']
 
+        widgets = {
+          'post_title': forms.TextInput(attrs={'class': 'form-control'}),
+          'content': forms.Textarea(attrs={'class': 'form-control', 'rows': 10}),
+        }
+        
+        labels = {
+            'post_title': '제목',
+            'image': '첨부파일',
+            'content': '내용',
+            'price' : '가격'
+        }  
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ['content']
+
+        widgets = {
+          'content': forms.Textarea(attrs={'class': 'form-control', 'rows':2, 'cols':10}),
+        }
+
+        labels = {
+            'content': '댓글 수정 중...',
+        }  

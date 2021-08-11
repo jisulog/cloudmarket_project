@@ -33,10 +33,9 @@ right:30px; top:60px;">
             </ol>
         </ul>
     {% endfor %}
-
-{% else %}
-    <p>게시글이 없습니다.</p>
-{% endif %}
+    {% else %}
+        <p>검색 결과가 없습니다.</p>
+    {% endif %}
 
 <!-- 페이징처리 시작 -->
 <ul class="pagination justify-content-center">

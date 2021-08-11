@@ -1,10 +1,9 @@
-from django.urls.base import reverse
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from market.models import Post
-from market.forms import PostForm
+from market.forms import CommentForm, PostForm
 from django.utils import timezone
 from django.urls import reverse_lazy
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404
 # 시그널(이미지 삭제)
 import os
 from django.db import models
@@ -36,8 +35,19 @@ class PostList(ListView):
         #subject__contains=kw 대신 subject__icontains=kw을 사용하면 대소문자를 가리지 않고 찾아 준다.    
         #filter 함수에서 모델 속성에 접근하기 위해서는 이처럼 __ (언더바 두개) 를 이용하여 하위 속성에 접근할 수 있다.
 
+# class PostDetail(DetailView):
+#     model = Post
+
 class PostDetail(DetailView):
     model = Post
+    template_name = 'market/post_detail.html'
+    form_class = CommentForm
+    
+    def get_context_data(self, **kwargs):
+        context = super(PostDetail, self).get_context_data(**kwargs)
+        # context['form'] = CommentForm(initial={'content': '',})
+        context['form'] = CommentForm
+        return context
 
 
 class PostCreate(CreateView):
