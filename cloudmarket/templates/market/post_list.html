@@ -2,9 +2,11 @@
 
 {% block content %}
 <!-- 검색 창 -->
-<div class="row justify-content-end my-3">
+<div class="row justify-content-end my-3" style="position:fixed; 
+right:30px; top:60px;">
     <div class="col-4 input-group">
-        <input type="text" class="form-control kw" value="{{ kw|default_if_none:'' }}">
+        <input type="text" style="position:relative; width:1000px;" class="form-control kw" value="{{ kw|default_if_none:'' }}">
+        <!-- 미디어 쿼리 등 반응형 웹 추가 필요 - 창 크기 작아졌을때 검색창은 안 뜨게 -->
         <div class="input-group-append">
             <button class="btn btn-primary" type="button" id="btn_search">찾기</button>
         </div>
@@ -42,7 +44,7 @@
     <!-- 이전페이지 -->
     {% if page_obj.has_previous %}
     <li class="page-item">
-        <a class="page-link" data-page="{{ page_obj.previous_page_number }}" href="#"><<</a>
+        <a class="page-link" data-page="{{ page_obj.previous_page_number }}" href="?page={{ page_obj.previous_page_number }}">이전</a>
     </li>
     {% else %}
     <li class="page-item disabled">
@@ -55,11 +57,11 @@
     {% if page_number >= page_obj.number|add:-5 and page_number <= page_obj.number|add:5 %}
     {% if page_number == page_obj.number %}
     <li class="page-item active" aria-current="page">
-        <a class="page-link" data-page="{{ page_number }}" href="#">{{ page_number }}</a>
+        <a class="page-link" data-page="{{ page_number }}" href="?page={{ page_number }}">{{ page_number }}</a>
     </li>
     {% else %}
     <li class="page-item">
-        <a class="page-link" data-page="{{ page_number }}" href="#">{{ page_number }}</a>
+        <a class="page-link" data-page="{{ page_number }}" href="?page={{ page_number }}">{{ page_number }}</a>
     </li>
     {% endif %}
     {% endif %}
@@ -68,7 +70,7 @@
     <!-- 다음페이지 -->
     {% if page_obj.has_next %}
     <li class="page-item">
-        <a class="page-link" data-page="{{ page_obj.next_page_number }}"  href="#">>></a>
+        <a class="page-link" data-page="{{ page_obj.next_page_number }}"  href="?page={{ page_obj.next_page_number }}">다음</a>
     </li>
     {% else %}
     <li class="page-item disabled">

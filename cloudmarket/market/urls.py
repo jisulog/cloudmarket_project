@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
-from .views import post_views, comment_views
+from .views import post_views, comment_views, my_views
 
 # 이미지
 # from django.conf.urls.static import static
@@ -36,4 +36,7 @@ urlpatterns = [
     path('comment/create/<int:pk>/', comment_views.CommentCreate.as_view(), name='commentcreate'),
     path('comment/update/<int:pk>/', comment_views.CommentUpdate.as_view(), name='commentupdate'),
     path('comment/delete/<int:pk>/', comment_views.CommentDelete.as_view(), name='commentdelete'),
+
+    path('postlist/', my_views.MyPostList.as_view(), name='mypostlist'),
+    path('commentlist/', my_views.MyCommentList.as_view(), name='mycommentlist'),
 ]
