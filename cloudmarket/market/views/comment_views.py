@@ -1,11 +1,9 @@
 from django.shortcuts import get_object_or_404
-from django.views.generic import CreateView, DeleteView, UpdateView, ListView
+from django.views.generic import CreateView, DeleteView, UpdateView
 from market.models import Comment, Post
 from market.forms import CommentForm
 from django.utils import timezone
 from django.urls import reverse_lazy
-from django.contrib.auth.decorators import login_required
-from django.db.models import Q
 
 # Create your views here.
 # CBV(Class Based View) 사용하기

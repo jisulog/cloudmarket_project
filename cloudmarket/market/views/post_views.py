@@ -1,12 +1,9 @@
-from typing import Text
-from django.http import request
-from django.urls.base import reverse
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
-from market.models import Comment, Post
+from market.models import Post
 from market.forms import CommentForm, PostForm
 from django.utils import timezone
 from django.urls import reverse_lazy
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404
 # 시그널(이미지 삭제)
 import os
 from django.db import models
