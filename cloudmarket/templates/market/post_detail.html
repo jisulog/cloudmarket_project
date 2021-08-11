@@ -112,7 +112,7 @@
     $(document).ready(function (){ $("[id^=button2]").click(
         function (e){    
             var target = $(e.target);
-            target.parent().toggle();
+            target.parent().parent().toggle();
             target.parent().parent().prev().toggle();
             // $("[id^=divToggle1]").toggle();
             // $("[id^=divToggle2]").toggle(); 
