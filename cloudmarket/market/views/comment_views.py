@@ -1,4 +1,3 @@
-from django.http import request
 from django.shortcuts import get_object_or_404
 from django.views.generic import CreateView, DeleteView, UpdateView
 from market.models import Comment, Post
@@ -11,6 +10,7 @@ from django.urls import reverse_lazy
 
 class CommentCreate(CreateView):
     form_class = CommentForm
+    template_name = 'market/post_datail.html'
     success_url = reverse_lazy('market:postdetail')
 
     def form_valid(self, form):
@@ -23,16 +23,20 @@ class CommentCreate(CreateView):
     
     def get_success_url(self):
         return reverse_lazy('market:postdetail', kwargs={'pk':self.object.post_id.pk}) 
-    
-    # def commentcreate(request, post_id):
-    #     post = get_object_or_404(Post, pk=post_id)
-    #     post.comment_set.create(content=request.POST.get('content'), create_date=timezone.now())
-    #     return redirect('market:postdetail', pk=post_id)
-    
 
 class CommentUpdate(UpdateView):
-    pass
+    form_class = CommentForm
+    template_name = 'market/post_detail.html'
+    success_url = reverse_lazy('market:postdetail')
 
+    def get_object(self):
+        comment = get_object_or_404(Comment, pk=self.kwargs['pk'])
+        comment.modify_date = timezone.now()
+        comment.save()
+        return comment
+
+    def get_success_url(self):
+        return reverse_lazy('market:postdetail', kwargs={'pk':self.object.post_id.pk})
 
 class CommentDelete(DeleteView):
     model = Comment
