@@ -1,7 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
 
-
-    
     <div class="container-fluid">
         <!-- 로고 -->
         <a class="navbar-brand" href="{% url 'market:postlist' %}">
@@ -18,10 +16,11 @@
             <ul class="navbar-nav mr-auto">
 
              {% if user.is_authenticated %}
+              <div class="dropdwon-right">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{ user.last_name }}님
-                    </a>
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ user.last_name }}님
+                        </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{% url 'common:logout' %}">로그아웃</a>
                     <div class="dropdown-divider"></div>
@@ -29,6 +28,7 @@
                     <a class="dropdown-item" href="#">내가 쓴 댓글</a>
                     </div>
                 </li>
+              </div>
              {% else %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'common:login' %}">로그인</a>
@@ -39,16 +39,4 @@
         </div>
     </div>
 </nav>
-
-<!-- <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown
-    </a>
-    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-    <a class="dropdown-item" href="#">로그아웃</a>
-    <a class="dropdown-item" href="#">내가 쓴 글</a>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#">내가 쓴 댓글</a>
-    </div>
-</li> -->
 
