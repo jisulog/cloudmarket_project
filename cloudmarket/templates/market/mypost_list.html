@@ -97,7 +97,7 @@ right:30px; top:60px;">
 </ul>
 <!-- 페이징처리 끝/작성 버튼 -->
 
-<a href="{% url 'market:postcreate' %}" {% if not user.is_authenticated %}hidden{% endif %}>작성</a>
+
 
 <!-- 검색 폼  -->
 <form id="searchForm" method="get" action="{% url 'market:postlist' %}">
