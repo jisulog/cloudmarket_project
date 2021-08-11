@@ -12,6 +12,7 @@ import os
 from django.db import models
 from django.dispatch import receiver
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
 #from django.core.paginator import Paginator
 
 # Create your views here.
@@ -19,7 +20,7 @@ from django.db.models import Q
 
 class PostList(ListView):
     paginate_by = 6 # 제네릭 뷰의 강력함 : 이 코드 한줄이면 뒤부턴 페이징을 신경쓸 필요가 없다
-
+    #template_name = 'templates/market/post_list.html'
     def get_queryset(self):
         #page = self.request.GET.get('page','1') # paging 관련 코드가 필요가 없어짐
         kw = self.request.GET.get('kw','')
@@ -51,6 +52,7 @@ class PostDetail(DetailView):
         context['form'] = CommentForm
         return context
 
+
 class PostCreate(CreateView):
     form_class = PostForm
     template_name = 'market/post_create.html'
@@ -65,6 +67,7 @@ class PostCreate(CreateView):
 
     def get_success_url(self):
         return reverse_lazy('market:postdetail', kwargs={'pk':self.object.pk})
+
 
 class PostUpdate(UpdateView):
     form_class = PostForm
@@ -94,6 +97,7 @@ class PostUpdate(UpdateView):
     def get_success_url(self):
         return reverse_lazy('market:postdetail', kwargs={'pk':self.object.pk})
 
+
 class PostDelete(DeleteView):
     model = Post
     success_url = '/'
@@ -107,3 +111,5 @@ class PostDelete(DeleteView):
 
     def get(self, request, *args, **kwargs):
         return self.post(request, *args, **kwargs)
+
+#@login_required(login_url='common:login')

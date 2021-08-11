@@ -1,12 +1,15 @@
 from django.shortcuts import get_object_or_404
-from django.views.generic import CreateView, DeleteView, UpdateView
+from django.views.generic import CreateView, DeleteView, UpdateView, ListView
 from market.models import Comment, Post
 from market.forms import CommentForm
 from django.utils import timezone
 from django.urls import reverse_lazy
+from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 
 # Create your views here.
 # CBV(Class Based View) 사용하기
+
 
 class CommentCreate(CreateView):
     form_class = CommentForm
@@ -24,6 +27,7 @@ class CommentCreate(CreateView):
     def get_success_url(self):
         return reverse_lazy('market:postdetail', kwargs={'pk':self.object.post_id.pk}) 
 
+
 class CommentUpdate(UpdateView):
     form_class = CommentForm
     template_name = 'market/post_detail.html'
@@ -38,6 +42,7 @@ class CommentUpdate(UpdateView):
     def get_success_url(self):
         return reverse_lazy('market:postdetail', kwargs={'pk':self.object.post_id.pk})
 
+
 class CommentDelete(DeleteView):
     model = Comment
     success_url = '/'
@@ -47,3 +52,5 @@ class CommentDelete(DeleteView):
 
     def get_success_url(self):
         return reverse_lazy('market:postdetail', kwargs={'pk':self.object.post_id.pk}) 
+
+#@login_required(login_url='common:login')

@@ -2,86 +2,83 @@
 
 {% block content %}
 <!-- 검색 창 -->
-<div class="row justify-content-end my-3">
+<div class="row justify-content-end my-3" style="position:fixed; 
+right:30px; top:60px;">
     <div class="col-4 input-group">
-        <input type="text" class="form-control kw" value="{{ kw|default_if_none:'' }}">
+        <input type="text" style="position:relative; width:1000px;" class="form-control kw" value="{{ kw|default_if_none:'' }}">
+        <!-- 미디어 쿼리 등 반응형 웹 추가 필요 - 창 크기 작아졌을때 검색창은 안 뜨게 -->
         <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button" id="btn_search">찾기</button>
+            <button class="btn btn-primary" type="button" id="btn_search">찾기</button>
         </div>
     </div>
 </div>
+
+<br>
+<br>
+
 <!--리스트창-->
- <h2>POST LIST</h2>
-    {% if page_obj %}
-        {% for post in page_obj %}
-
-            <ul>
-                {% if post.image %}
-                <img src = "{{ post.image.url }}" alt="{{ post.image }}"> 
-                <!--resize height="300" width="500"-->
+{% if page_obj %}
+    {% for post in page_obj %}
+        <ul>
+            <img class="rounded" src = "{{ post.image.url }}" alt="{{ post.image }}"> 
+            <ol><a href="/market/{{ post.id }}/">{{ post.post_title }}</a></ol> 
+            <ol>{{ post.user_id.last_name }} </ol>
+            <ol>{{ post.price }}원</ol>
+            <ol>
+                {% if post.modify_date %}
+                    <div>{{ post.modify_date }}(수정)</div>             
                 {% else %}
-                <p>이미지가 없습니다</p>
+                    <div>{{ post.create_date }}</div>
                 {% endif %}
-                <ol><a href="/market/{{ post.id }}/">{{ post.post_title }}</a></ol> 
-                <ol>{{ post.user_id.last_name }} </ol>
-                <ol>{{ post.price }}원</ol>
-                <ol>
-                    {% if post.modify_date %}
-                    <div class="badge badge-light p-2 text-left mx-3">
-                        <div>{{ post.modify_date }}(수정)</div>
-                    </div>
-                    {% else %}
-                    <div class="badge badge-light p-2 text-left mx-3">
-                        <div>{{ post.create_date }}</div>
-                    </div>
-                    {% endif %}
-                </ol>
-            </ul>
-        {% endfor %}
-
+            </ol>
+        </ul>
+    {% endfor %}
     {% else %}
         <p>검색 결과가 없습니다.</p>
     {% endif %}
 
 <!-- 페이징처리 시작 -->
 <ul class="pagination justify-content-center">
+
     <!-- 이전페이지 -->
     {% if page_obj.has_previous %}
     <li class="page-item">
-        <a class="page-link" data-page="{{ page_obj.previous_page_number }}" href="#">이전</a>
+        <a class="page-link" data-page="{{ page_obj.previous_page_number }}" href="?page={{ page_obj.previous_page_number }}">이전</a>
     </li>
     {% else %}
     <li class="page-item disabled">
-        <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
+        <a class="page-link" tabindex="-1" aria-disabled="true" href="#"><<</a>
     </li>
     {% endif %}
+    
     <!-- 페이지리스트 -->
     {% for page_number in page_obj.paginator.page_range %}
     {% if page_number >= page_obj.number|add:-5 and page_number <= page_obj.number|add:5 %}
     {% if page_number == page_obj.number %}
     <li class="page-item active" aria-current="page">
-        <a class="page-link" data-page="{{ page_number }}" href="#">{{ page_number }}</a>
+        <a class="page-link" data-page="{{ page_number }}" href="?page={{ page_number }}">{{ page_number }}</a>
     </li>
     {% else %}
     <li class="page-item">
-        <a class="page-link" data-page="{{ page_number }}" href="#">{{ page_number }}</a>
+        <a class="page-link" data-page="{{ page_number }}" href="?page={{ page_number }}">{{ page_number }}</a>
     </li>
     {% endif %}
     {% endif %}
     {% endfor %}
+
     <!-- 다음페이지 -->
     {% if page_obj.has_next %}
     <li class="page-item">
-        <a class="page-link" data-page="{{ page_obj.next_page_number }}"  href="#">다음</a>
+        <a class="page-link" data-page="{{ page_obj.next_page_number }}"  href="?page={{ page_obj.next_page_number }}">다음</a>
     </li>
     {% else %}
     <li class="page-item disabled">
-        <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+        <a class="page-link" tabindex="-1" aria-disabled="true" href="#">>></a>
     </li>
     {% endif %}
 </ul>
-<!-- 페이징처리 끝/작성 버튼 -->
 
+<!-- 페이징처리 끝 / 게시글 작성 버튼 -->
 <a href="{% url 'market:postcreate' %}" {% if not user.is_authenticated %}hidden{% endif %}>작성</a>
 
 <!-- 검색 폼  -->
@@ -89,7 +86,6 @@
     <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
     <input type="hidden" id="page" name="page" value="{{ page }}">
 </form>
-
 
 {% endblock %}
 {% block script %}
