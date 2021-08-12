@@ -1,15 +1,15 @@
-from django.urls.base import reverse
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from market.models import Post
-from market.forms import PostForm
+from market.forms import CommentForm, PostForm
 from django.utils import timezone
 from django.urls import reverse_lazy
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404
 # 시그널(이미지 삭제)
 import os
 from django.db import models
 from django.dispatch import receiver
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
 #from django.core.paginator import Paginator
 
 # Create your views here.
@@ -17,7 +17,7 @@ from django.db.models import Q
 
 class PostList(ListView):
     paginate_by = 6 # 제네릭 뷰의 강력함 : 이 코드 한줄이면 뒤부턴 페이징을 신경쓸 필요가 없다
-
+    #template_name = 'templates/market/post_list.html'
     def get_queryset(self):
         #page = self.request.GET.get('page','1') # paging 관련 코드가 필요가 없어짐
         kw = self.request.GET.get('kw','')
@@ -37,6 +37,15 @@ class PostList(ListView):
 
 class PostDetail(DetailView):
     model = Post
+    template_name = 'market/post_detail.html'
+    form_class = CommentForm
+    
+    def get_context_data(self, **kwargs):
+        context = super(PostDetail, self).get_context_data(**kwargs)
+        # context['form'] = CommentForm(initial={'content': '',})
+        context['form'] = CommentForm
+        return context
+
 
 class PostCreate(CreateView):
     form_class = PostForm
@@ -52,6 +61,7 @@ class PostCreate(CreateView):
 
     def get_success_url(self):
         return reverse_lazy('market:postdetail', kwargs={'pk':self.object.pk})
+
 
 class PostUpdate(UpdateView):
     form_class = PostForm
@@ -81,6 +91,7 @@ class PostUpdate(UpdateView):
     def get_success_url(self):
         return reverse_lazy('market:postdetail', kwargs={'pk':self.object.pk})
 
+
 class PostDelete(DeleteView):
     model = Post
     success_url = '/'
@@ -94,3 +105,4 @@ class PostDelete(DeleteView):
 
     def get(self, request, *args, **kwargs):
         return self.post(request, *args, **kwargs)
+

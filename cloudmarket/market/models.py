@@ -3,16 +3,17 @@ from django.urls.base import reverse
 from imagekit.models import ProcessedImageField #resize
 from imagekit.processors import ResizeToFit #resize
 from django.contrib.auth.models import User
+from django.core.validators import MinValueValidator
 # Create your models here.
 
 # 게시글 모델
 class Post(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     post_title = models.CharField(max_length=50)
-    # image = models.ImageField(upload_to='img/', max_length=300)
-    image = ProcessedImageField(upload_to='img/', processors=[ResizeToFit(500,500)]) #resize
+    # image = models.ImageField(upload_to='img/', blank=True, null=True)
+    image = ProcessedImageField(upload_to='img/', blank=True, null=True, processors=[ResizeToFit(500,500)]) #resize
     content = models.TextField()
-    price = models.IntegerField()
+    price = models.IntegerField(validators=[MinValueValidator(0)])
     create_date = models.DateTimeField()
     modify_date = models.DateTimeField(null=True, blank=True)
 

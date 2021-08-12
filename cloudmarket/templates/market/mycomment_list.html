@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- 리스트창 -->
+<br>
+<br>
+
+<div>
+    <h5> 내가 쓴 댓글 수 : {{ mycomment|length}}개 </h5> 
+</div >
+<div>
+ {% if page_obj %}
+    
+    {% for comment in page_obj %}
+
+        <ul>
+            <ol><a href="{% url 'market:postdetail' comment.post_id.id  %}">{{ comment.content }}</a></ol> 
+            <ol>{{ comment.user_id.last_name }} </ol>
+            <ol>
+                {% if comment.modify_date %}
+                <div>
+                    <div>{{ comment.modify_date }}(수정)</div>
+                </div>
+                {% else %}
+                <div>
+                    <div>{{ comment.create_date }}</div>
+                </div>
+                {% endif %}
+            </ol>
+        </ul>
+    {% endfor %}
+
+ {% else %}
+    <p>내가 쓴 댓글이 없습니다.</p>
+ {% endif %}
+</div>
+
+<!-- 페이징처리 시작  style="position:relative; bottom:0px;"-->
+<div>
+<ul class="pagination justify-content-center">
+<!-- 이전페이지 -->
+{% if page_obj.has_previous %}
+<li class="page-item">
+    <a class="page-link" data-page="{{ page_obj.previous_page_number }}" href="?page={{ page_obj.previous_page_number }}"><<</a>
+</li>
+{% else %}
+<li class="page-item disabled">
+    <a class="page-link" tabindex="-1" aria-disabled="true" href="#"><<</a>
+</li>
+{% endif %}
+<!-- 페이지리스트 -->
+{% for page_number in page_obj.paginator.page_range %}
+{% if page_number >= page_obj.number|add:-5 and page_number <= page_obj.number|add:5 %}
+{% if page_number == page_obj.number %}
+<li class="page-item active" aria-current="page">
+    <a class="page-link" data-page="{{ page_number }}" href="?page={{ page_number }}">{{ page_number }}</a>
+</li>
+{% else %}
+<li class="page-item">
+    <a class="page-link" data-page="{{ page_number }}" href="?page={{ page_number }}">{{ page_number }}</a>
+</li>
+{% endif %}
+{% endif %}
+{% endfor %}
+<!-- 다음페이지 -->
+{% if page_obj.has_next %}
+<li class="page-item">
+    <a class="page-link" data-page="{{ page_obj.next_page_number }}"  href="?page={{ page_obj.next_page_number }}">>></a>
+</li>
+{% else %}
+<li class="page-item disabled">
+    <a class="page-link" tabindex="-1" aria-disabled="true" href="#">>></a>
+</li>
+{% endif %}
+</ul>
+</div>
+
+{% endblock %}

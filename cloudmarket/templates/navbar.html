@@ -1,22 +1,24 @@
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-
     <div class="container-fluid">
         <!-- 로고 -->
         <a class="navbar-brand" href="{% url 'market:postlist' %}">
             <img src="/static/cloudlogo.png" width="90" height="58" alt="cloudmarketlogo">
         </a>
 
-        <!-- 메뉴바 -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button> 
+        <!-- 검색 창 -->
+        <div class="col-4 input-group">
+            <input type="text" class="form-control kw" value="{{ kw|default_if_none:'' }}" placeholder="검색어를 입력하세요">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="button" id="btn_search">찾기</button>
+            </div>
+        </div>
 
-        <!-- 드롭 다운 -->
+        <!-- 드롭 다운  style="position:relative; left:1150px;"-->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
 
              {% if user.is_authenticated %}
-              <div class="dropdwon-right">
+              <div>
                 <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ user.last_name }}님
@@ -24,8 +26,8 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{% url 'common:logout' %}">로그아웃</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">내가 쓴 글</a>
-                    <a class="dropdown-item" href="#">내가 쓴 댓글</a>
+                    <a class="dropdown-item" href="{% url 'market:mypostlist' %}">내가 쓴 게시글</a>
+                    <a class="dropdown-item" href="{% url 'market:mycommentlist' %}">내가 쓴 댓글</a>
                     </div>
                 </li>
               </div>
@@ -37,6 +39,11 @@
 
             </ul>
         </div>
+
+        <!-- 메뉴바 -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button> 
     </div>
 </nav>
 
