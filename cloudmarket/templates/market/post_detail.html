@@ -15,6 +15,7 @@
 <br>
 
 <!-- 게시글 -->
+<div class="align-center">
 <div class="container">
     <h3>{{ post.post_title }}</h3>
     {{ post.user_id.last_name }} | {% if post.modify_date %} {{ post.modify_date }}(수정) {% else %} {{ post.create_date }} {% endif %}
@@ -22,6 +23,7 @@
     <img src="{{ post.image.url }}" alt="{{ post.image }}">
     <p>{{ post.price }}원</p>
     <p>{{ post.content }}</p>
+</div>
 </div>
 
 <div>
