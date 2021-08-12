@@ -20,8 +20,8 @@
     {{ post.user_id.last_name }} | {% if post.modify_date %} {{ post.modify_date }}(수정) {% else %} {{ post.create_date }} {% endif %}
 <div>
     <img src="{{ post.image.url }}" alt="{{ post.image }}">
-    <p>{{ post.price }}원</p>
     <p>{{ post.content }}</p>
+    <p>{{ post.price }}원</p>
 </div>
 
 <div>

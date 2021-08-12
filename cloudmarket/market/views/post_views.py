@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from market.models import Post
 from market.forms import CommentForm, PostForm
@@ -58,7 +59,7 @@ class PostCreate(CreateView):
     def form_valid(self, form):
         post = form.save(commit=False)
         post.user_id = self.request.user
-        post.create_date = timezone.now()
+        post.create_date = datetime.now()
         post.save()
         return super().form_valid(form)
 
@@ -73,7 +74,7 @@ class PostUpdate(UpdateView):
 
     def get_object(self):
         post = get_object_or_404(Post, pk=self.kwargs['pk'])
-        post.modify_date = timezone.now()
+        post.modify_date = datetime.now()
         post.save()
         return post
     
