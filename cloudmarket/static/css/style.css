@@ -10,7 +10,6 @@ background-color: #4791FF;
 color: #fff;
 }
 
-<<<<<<< HEAD
 /* 내가 쓴 글, 내가 쓴 댓글 */
 .styled-table tbody tr:nth-of-type(even):hover{
     background-color: #f0f0f0
@@ -69,7 +68,7 @@ color: #fff;
     font-size: 2em;
     min-width: 100%;
 }
-=======
+
 .align-center { text-align: center; }
 .align-right-75 {
 
@@ -95,4 +94,3 @@ color: #fff;
     margin:auto;
     text-align:left;
 }
->>>>>>> 26fe3ddcc7b3c68dcc0bea77db93b80bc695d49b
