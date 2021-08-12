@@ -25,7 +25,7 @@ class MyPostList(ListView):
         print(self.request.user.id)
         print(self.request.user.last_name)
         mypost_list=mypost_list.filter(
-            Q(user_id__username__icontains=self.request.user.username) 
+            Q(user_id__username=self.request.user.username) 
             #아이디로 비교 user_id__username과 user.username
         ).distinct()
         mypost_count = mypost_list.exclude().count()
@@ -59,7 +59,7 @@ class MyCommentList(ListView):
         global mycomment_list
         mycomment_list=Comment.objects.order_by('-create_date')
         mycomment_list=mycomment_list.filter(
-            Q(user_id__username__icontains=self.request.user.username) 
+            Q(user_id__username=self.request.user.username) 
             #아이디로 비교 user_id__username과 user.username
         ).distinct()
         return mycomment_list #return 타입 역시 queryset. 복잡하게 생각말기(render, reverse_lazy 필요없음)
