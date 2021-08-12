@@ -19,7 +19,9 @@ from django.contrib.auth.decorators import login_required
 class PostList(ListView):
     paginate_by = 6 # 제네릭 뷰의 강력함 : 이 코드 한줄이면 뒤부턴 페이징을 신경쓸 필요가 없다
     #template_name = 'templates/market/post_list.html'
+    global post_list
     def get_queryset(self):
+        global post_list
         #page = self.request.GET.get('page','1') # paging 관련 코드가 필요가 없어짐
         kw = self.request.GET.get('kw','')
         post_list=Post.objects.order_by('-create_date')
@@ -35,9 +37,10 @@ class PostList(ListView):
       
         #subject__contains=kw 대신 subject__icontains=kw을 사용하면 대소문자를 가리지 않고 찾아 준다.    
         #filter 함수에서 모델 속성에 접근하기 위해서는 이처럼 __ (언더바 두개) 를 이용하여 하위 속성에 접근할 수 있다.
-
-# class PostDetail(DetailView):
-#     model = Post
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context ={"kw" : self.request.GET.get('kw','')}
+        kwargs.update(context)
+        return super().get_context_data(**kwargs)
 
 class PostDetail(DetailView):
     model = Post
@@ -110,4 +113,3 @@ class PostDelete(DeleteView):
     def get(self, request, *args, **kwargs):
         return self.post(request, *args, **kwargs)
 
-#@login_required(login_url='common:login')
