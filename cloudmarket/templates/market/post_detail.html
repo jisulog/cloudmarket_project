@@ -19,15 +19,19 @@
     <h3>{{ post.post_title }}</h3>
     {{ post.user_id.last_name }} | {% if post.modify_date %} {{ post.modify_date }}(수정) {% else %} {{ post.create_date }} {% endif %}
 <div>
-    <img src="{{ post.image.url }}" alt="{{ post.image }}">
+    {% if post.image %}
+        <img src = "{{ post.image.url }}" alt="{{ post.image }}"> 
+    {% else %}
+        <p>?? 이미지가 없습니다</p>
+    {% endif %}
     <p>{{ post.price }}원</p>
     <p>{{ post.content }}</p>
 </div>
 
 <div>
 {% if request.user == post.user_id %}
-<a href="{% url 'market:postupdate' post.id  %}">수정</a>
-<a href="{% url 'market:postdelete' post.id  %}">삭제</a>
+<a class="btn btn-primary" href="{% url 'market:postupdate' post.id  %}">수정</a>
+<a class="btn btn-primary" href="{% url 'market:postdelete' post.id  %}">삭제</a>
 {% endif %}
 </div>
 </div>
@@ -35,14 +39,13 @@
 <!-- 댓글 목록 -->
 <hr>
 <h5>{{ post.comment_set.count }}개의 답변이 있습니다.</h5>
-<div></div>
 
 <!-- 댓글 수정 -->
 {% for comment in post.comment_set.all %}
 <div class="mt-3">
     <div class="comment py-2 text-muted" id="divToggle1{{ comment.id }}" style="display: block;">
         <span style="white-space: pre-line;">
-    {{ comment.user_id }} | {% if comment.modify_date %} {{ comment.modify_date }}(수정) {% else %} {{ comment.create_date }} {% endif %}<br></span>
+    {{ comment.user_id.last_name }} | {% if comment.modify_date %} {{ comment.modify_date }}(수정) {% else %} {{ comment.create_date }} {% endif %}<br></span>
     <span>{{ comment.content }}</span><br>
     {% if request.user == comment.user_id %}
     <input type="button" class="btn btn-primary" value="수정" id="button1{{ comment.id }}">
