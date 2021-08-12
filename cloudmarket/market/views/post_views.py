@@ -36,6 +36,10 @@ class PostList(ListView):
       
         #subject__contains=kw 대신 subject__icontains=kw을 사용하면 대소문자를 가리지 않고 찾아 준다.    
         #filter 함수에서 모델 속성에 접근하기 위해서는 이처럼 __ (언더바 두개) 를 이용하여 하위 속성에 접근할 수 있다.
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context ={"kw" : self.request.GET.get('kw','')}
+        kwargs.update(context)
+        return super().get_context_data(**kwargs)
 
 class PostDetail(DetailView):
     model = Post
