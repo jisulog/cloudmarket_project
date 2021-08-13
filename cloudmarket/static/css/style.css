@@ -24,7 +24,7 @@
     margin-right: 80px;
 
 /* 배경 */
-#test {
+#test{
     height: auto;
     min-height: 100vh;
     background: #BE93C5;  /* fallback for old browsers */
