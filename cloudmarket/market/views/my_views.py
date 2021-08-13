@@ -20,18 +20,10 @@ class MyPostList(ListView):
     def get_queryset(self):
         global mypost_list
         mypost_list=Post.objects.order_by('-create_date')
-        print(self.request.user.username)
-        print(self.request.user)
-        print(self.request.user.id)
-        print(self.request.user.last_name)
         mypost_list=mypost_list.filter(
-            Q(user_id__username__icontains=self.request.user.username) 
+            Q(user_id__username=self.request.user.username) 
             #아이디로 비교 user_id__username과 user.username
         ).distinct()
-        mypost_count = mypost_list.exclude().count()
-        #paginate된 거 말고 전체 글 저장하는 거 찾아봐야 - context _object_name은 현재 페이지네이트되서 5개만저장됨
-        #get context data overriding 하기
-        print(mypost_count)
         return mypost_list #return 타입 역시 queryset. 복잡하게 생각말기(render, reverse_lazy 필요없음)
 
     def get_context_data(self, **kwargs):
@@ -59,7 +51,7 @@ class MyCommentList(ListView):
         global mycomment_list
         mycomment_list=Comment.objects.order_by('-create_date')
         mycomment_list=mycomment_list.filter(
-            Q(user_id__username__icontains=self.request.user.username) 
+            Q(user_id__username=self.request.user.username) 
             #아이디로 비교 user_id__username과 user.username
         ).distinct()
         return mycomment_list #return 타입 역시 queryset. 복잡하게 생각말기(render, reverse_lazy 필요없음)

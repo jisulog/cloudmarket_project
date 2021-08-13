@@ -1,3 +1,4 @@
+/* post_list */
 .imglist { 
     width: 300px; 
     height: 300px; 
@@ -21,4 +22,158 @@
     margin-bottom: 50px;
     margin-left: 10px;
     margin-right: 80px;
+
+/* 배경 */
+#test {
+    height: auto;
+    min-height: 100vh;
+    background: #BE93C5;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #E3F3FD, #fde3f3);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #E3F3FD, #fde3f3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+/*  textarea */
+textarea{
+    resize: none;
+}
+
+/* 내가 쓴 글, 내가 쓴 댓글 */
+.styled-table tbody tr:nth-of-type(even):hover{
+    background-color: #fde3f3
+}
+.styled-table tbody tr:nth-of-type(odd):hover {
+    background-color: #f0f0f0
+  }
+
+.styled-table tbody tr:nth-of-type(odd) {
+    background-color: #ffffff;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #E3F3FD;
+}
+
+.styled-table {
+    margin: 100px 0;
+    font-size: 0.9em;
+    min-width: 100%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    border-radius: 20px 20px 0px 0px;
+}
+
+.styled-table thead tr th.table-border{
+    border-radius: 20px 20px 0px 0px;
+}
+
+.styled-table thead tr {
+    background-color: #4791FF;
+    color: #ffffff;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #4791FF;
+}
+.styled-table tbody tr td.table-no {
+    width: 20px;
+    text-align: center;
+}
+
+.styled-table tbody tr td.table-price{
+    width: 150px;
+    text-align: right;
+}
+
+.styled-table tbody tr td.table-date{
+    width: 100px;
+    text-align: right;
+}
+
+.no-post-comment {
+    color:#6c757d;
+    margin: 150px 0;
+    text-align: center;
+    font-size: 2em;
+    min-width: 100%;
+}
+/* 내가 쓴 글, 내가 쓴 댓글 끝 */
+
+/* 디테일 */
+.align-center { text-align: center; }
+.align-right-75 {
+
+    width : 75%; 
+    text-align: right; 
+}
+.bluecolormapping{
+    background-color: #4791FF;
+    color: #fff;
+    width: 100%;
+    text-align: center;
+}
+
+.pasdasd-left {
+    margin-left : 27%;
+    width : 500px;
+    text-align : left;
+    
+}
+
+.most-used-csh{
+    width:500px;
+    margin:auto;
+    text-align:left;
+}
+/* 디테일 끝 */
+
+
+/* 게시글 등록 */
+.contact{
+    padding: 4%;
+}
+.col-md-3{
+    background: #12c2e9;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, 	#c471ed, #4791FF);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, 	#c471ed, #4791FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    padding: 4%;
+    color: #ffffff;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+}
+.contact-info{
+    margin-top:10%;
+}
+.contact-info img{
+    margin-bottom: 15%;
+}
+.contact-info h2{
+    margin-bottom: 10%;
+}
+.col-md-9{
+    background: #fff;
+    padding: 3%;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    resize: none;
+}
+.contact-form label{
+    font-weight:600;
+}
+.contact-form button{
+    background-color: #4791FF;
+    color: #fff;
+    font-weight: 600;
+    width: 25%;
+}
+.contact-form button:focus{
+    box-shadow:none;
 }
