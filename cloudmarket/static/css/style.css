@@ -9,4 +9,62 @@
 background-color: #4791FF;
 color: #fff;
 }
-  
+
+/* 내가 쓴 글, 내가 쓴 댓글 */
+.styled-table tbody tr:nth-of-type(even):hover{
+    background-color: #f0f0f0
+}
+.styled-table tbody tr:hover {
+    background-color: #f0f0f0
+  }
+
+.styled-table {
+    margin: 15% 0;
+    font-size: 0.9em;
+    min-width: 100%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table thead tr {
+    background-color: #4791FF;
+    color: #ffffff;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #E3F3FD;
+}
+
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #4791FF;
+}
+.styled-table tbody tr td.table-no {
+    width: 5%;
+    text-align: center;
+}
+
+.styled-table tbody tr td.table-price{
+    width: 25%;
+    text-align: right;
+}
+
+.styled-table tbody tr td.table-date{
+    width: 25%;
+    text-align: right;
+}
+
+.no-post-comment {
+    padding: 10%;
+    text-align: center;
+    font-size: 2em;
+    min-width: 100%;
+}

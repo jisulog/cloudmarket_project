@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.shortcuts import get_object_or_404
 from django.views.generic import CreateView, DeleteView, UpdateView
 from market.models import Comment, Post
@@ -18,7 +19,7 @@ class CommentCreate(CreateView):
         comment = form.save(commit=False)
         comment.post_id = get_object_or_404(Post, pk=self.kwargs['pk'])
         comment.user_id = self.request.user
-        comment.create_date = timezone.now()
+        comment.create_date = datetime.now()
         comment.save()
         return super().form_valid(form)
     
@@ -33,7 +34,7 @@ class CommentUpdate(UpdateView):
 
     def get_object(self):
         comment = get_object_or_404(Comment, pk=self.kwargs['pk'])
-        comment.modify_date = timezone.now()
+        comment.modify_date = datetime.now()
         comment.save()
         return comment
 
