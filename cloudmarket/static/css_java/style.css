@@ -1,8 +1,38 @@
+/* 배경 */
+#test {
+    height: auto;
+    min-height: 100vh;
+    background: #BE93C5;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #E3F3FD, #fde3f3);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #E3F3FD, #fde3f3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+/*  textarea */
+textarea {
+    resize: none;
+}
+/* navbar */
+
 /* post_list */
 .imglist { 
     width: 300px; 
     height: 300px; 
     object-fit: cover;
+}
+
+.listmargin {
+    margin-left: 110px;
+}
+
+a:hover {
+    text-decoration-line: none;
+}
+h5 {
+    margin-top: 10px;
+}
+.listtext {
+    color: black;   
+    padding: none;
 }
 
 .clearfix{
@@ -22,28 +52,17 @@
     margin-bottom: 50px;
     margin-left: 10px;
     margin-right: 80px;
-
-/* 배경 */
-#test{
-    height: auto;
-    min-height: 100vh;
-    background: #BE93C5;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to bottom, #E3F3FD, #fde3f3);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to bottom, #E3F3FD, #fde3f3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-/*  textarea */
-textarea{
-    resize: none;
-}
 
-/* 내가 쓴 글, 내가 쓴 댓글 */
-.styled-table tbody tr:nth-of-type(even):hover{
+/* mypost, mycomment */
+.styled-table tbody tr:nth-of-type(even):hover {
     background-color: #fde3f3
 }
+
 .styled-table tbody tr:nth-of-type(odd):hover {
     background-color: #f0f0f0
-  }
+}
 
 .styled-table tbody tr:nth-of-type(odd) {
     background-color: #ffffff;
@@ -105,38 +124,57 @@ textarea{
     font-size: 2em;
     min-width: 100%;
 }
-/* 내가 쓴 글, 내가 쓴 댓글 끝 */
 
-/* 디테일 */
-.align-center { text-align: center; }
-.align-right-75 {
 
-    width : 75%; 
+/* post_detail */
+.detail-background {
+    background-color: #FFF; 
+    width: 700px;
+    /* border: 1px solid #6c757d */
+}
+
+hr {
+    width: 550px; 
+    align: center;
+}
+.align-center { 
+    text-align: center; 
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.align-right-90 {
+    width : 90%; 
+    /* 위치이동 조절 */
     text-align: right; 
 }
-.bluecolormapping{
-    background-color: #4791FF;
-    color: #fff;
-    width: 100%;
-    text-align: center;
-}
 
-.pasdasd-left {
-    margin-left : 27%;
-    width : 500px;
-    text-align : left;
-    
-}
-
-.most-used-csh{
+.detail-content {
     width:500px;
     margin:auto;
     text-align:left;
 }
-/* 디테일 끝 */
 
+.detail-btn {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    margin-right: 60px;
+    text-align: right;
+}
 
-/* 게시글 등록 */
+.imgdetail {
+    width: 300px; 
+    height: 300px; 
+    object-fit: contain;
+}
+
+/* comment */
+.comment {
+    width: 500px; 
+    margin: auto;
+}
+
+/* post_create */
 .contact{
     padding: 4%;
 }
