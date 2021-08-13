@@ -16,7 +16,9 @@ from django.contrib.auth.decorators import login_required
 # CBV(Class Based View) 사용하기
 
 class PostList(ListView):
-    paginate_by = 6 # 제네릭 뷰의 강력함 : 이 코드 한줄이면 뒤부턴 페이징을 신경쓸 필요가 없다
+    paginate_by = 8
+    # 자동: context = {'page_obj':page_obj}
+    # 제네릭 뷰의 강력함 : 이 코드 한줄이면 뒤부턴 페이징을 신경쓸 필요가 없다
     #template_name = 'templates/market/post_list.html'
     def get_queryset(self):
         #page = self.request.GET.get('page','1') # paging 관련 코드가 필요가 없어짐
