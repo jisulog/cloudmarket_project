@@ -68,3 +68,30 @@ color: #fff;
     font-size: 2em;
     min-width: 100%;
 }
+/* 내가 쓴 글, 내가 쓴 댓글 끝 */
+
+.align-center { text-align: center; }
+.align-right-75 {
+
+    width : 75%; 
+    text-align: right; 
+}
+.bluecolormapping{
+    background-color: #4791FF;
+    color: #fff;
+    width: 100%;
+    text-align: center;
+}
+
+.pasdasd-left {
+    margin-left : 27%;
+    width : 500px;
+    text-align : left;
+    
+}
+
+.most-used-csh{
+    width:500px;
+    margin:auto;
+    text-align:left;
+}

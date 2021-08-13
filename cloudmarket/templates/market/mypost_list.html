@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load humanize %}
 {% block content %}
+
 <!-- 검색 창 -->
 <div class="row justify-content-end my-3" style="position:fixed; 
 right:30px; top:60px;">
@@ -12,9 +13,6 @@ right:30px; top:60px;">
         </div>
     </div>
 </div>
-
-<!-- 내가 쓴 게시글, 댓글 수 -->
-
 <!--리스트창-->
 {% if page_obj %} 
     <div class="container-sm">
@@ -45,72 +43,72 @@ right:30px; top:60px;">
 {% endif %}
 <!-- 페이징처리 시작 -->
 <ul class="pagination justify-content-center">
-<!-- 이전페이지 -->
-{% if page_obj.has_previous %}
-<li class="page-item">
-    <a class="page-link" data-page="{{ page_obj.previous_page_number }}" href="?page={{ page_obj.previous_page_number }}">이전</a>
-</li>
-{% else %}
-<li class="page-item disabled">
-    <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
-</li>
-{% endif %}
-<!-- 페이지리스트 -->
-{% for page_number in page_obj.paginator.page_range %}
-{% if page_number >= page_obj.number|add:-5 and page_number <= page_obj.number|add:5 %}
-{% if page_number == page_obj.number %}
-<li class="page-item active" aria-current="page">
-    <a class="page-link" data-page="{{ page_number }}" href="?page={{ page_number }}">{{ page_number }}</a>
-</li>
-{% else %}
-<li class="page-item">
-    <a class="page-link" data-page="{{ page_number }}" href="?page={{ page_number }}">{{ page_number }}</a>
-</li>
-{% endif %}
-{% endif %}
-{% endfor %}
-<!-- 다음페이지 -->
-{% if page_obj.has_next %}
-<li class="page-item">
-    <a class="page-link" data-page="{{ page_obj.next_page_number }}"  href="?page={{ page_obj.next_page_number }}">다음</a>
-</li>
-{% else %}
-<li class="page-item disabled">
-    <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
-</li>
-{% endif %}
-</ul>
-<!-- 페이징처리 끝/작성 버튼 -->
-
-
-
-<!-- 검색 폼  -->
-<form id="searchForm" method="get" action="{% url 'market:postlist' %}">
-<input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
-<input type="hidden" id="page" name="page" value="{{ page }}">
-</form>
-
-
-{% endblock %}
-{% block script %}
-<script type='text/javascript'>
-//console.log('자바스크립트 초입');
-//document.write('자바스크립트 초입');
-$(document).ready(function(){
-$(".page-link").on('click', function() {
-    $("#page").val($(this).data("page"));
-    $("#searchForm").submit();
-});
-
-$("#btn_search").on('click', function() {
-    //console.log('버튼 입력');
-    //document.write('버튼 입력');
-    $("#kw").val($(".kw").val());
-    $("#page").val(1);  // 검색버튼을 클릭할 경우 1페이지부터 조회한다.
-    $("#searchForm").submit();
-});
-});
-
-
-</script>
-{% endblock %}
+    <!-- 이전페이지 -->
+    {% if page_obj.has_previous %}
+    <li class="page-item">
+        <a class="page-link" data-page="{{ page_obj.previous_page_number }}" href="?page={{ page_obj.previous_page_number }}">이전</a>
+    </li>
+    {% else %}
+    <li class="page-item disabled">
+        <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
+    </li>
+    {% endif %}
+    <!-- 페이지리스트 -->
+    {% for page_number in page_obj.paginator.page_range %}
+    {% if page_number >= page_obj.number|add:-5 and page_number <= page_obj.number|add:5 %}
+    {% if page_number == page_obj.number %}
+    <li class="page-item active" aria-current="page">
+        <a class="page-link" data-page="{{ page_number }}" href="?page={{ page_number }}">{{ page_number }}</a>
+    </li>
+    {% else %}
+    <li class="page-item">
+        <a class="page-link" data-page="{{ page_number }}" href="?page={{ page_number }}">{{ page_number }}</a>
+    </li>
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+    <!-- 다음페이지 -->
+    {% if page_obj.has_next %}
+    <li class="page-item">
+        <a class="page-link" data-page="{{ page_obj.next_page_number }}"  href="?page={{ page_obj.next_page_number }}">다음</a>
+    </li>
+    {% else %}
+    <li class="page-item disabled">
+        <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+    </li>
+    {% endif %}
+    </ul>
+    <!-- 페이징처리 끝/작성 버튼 -->
+    
+    
+    
+    <!-- 검색 폼  -->
+    <form id="searchForm" method="get" action="{% url 'market:postlist' %}">
+    <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
+    <input type="hidden" id="page" name="page" value="{{ page }}">
+    </form>
+    
+    
+    {% endblock %}
+    {% block script %}
+    <script type='text/javascript'>
+    //console.log('자바스크립트 초입');
+    //document.write('자바스크립트 초입');
+    $(document).ready(function(){
+    $(".page-link").on('click', function() {
+        $("#page").val($(this).data("page"));
+        $("#searchForm").submit();
+    });
+    
+    $("#btn_search").on('click', function() {
+        //console.log('버튼 입력');
+        //document.write('버튼 입력');
+        $("#kw").val($(".kw").val());
+        $("#page").val(1);  // 검색버튼을 클릭할 경우 1페이지부터 조회한다.
+        $("#searchForm").submit();
+    });
+    });
+    
+    
+    </script>
+    {% endblock %}

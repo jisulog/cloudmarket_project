@@ -13,18 +13,16 @@ right:30px; top:60px;">
     </div>
 </div>
 
-<!-- 내가 쓴 게시글, 댓글 수 -->
-
 <!--리스트창-->
-{% if page_obj %} 
-    <div class="container-sm">
-        <table class="styled-table">
-            <thead>
+{% if page_obj %}
+<div class="container-sm">
+    <table class="styled-table">
+        <thead>
             <tr>
                 <th colspan="3">{{ user.last_name }}님이 남긴 댓글({{ mycomment|length}})</th>
             </tr>
-            </thead>
-            <tbody>
+        </thead>
+        <tbody>
             {% for comment in page_obj %}
             <tr class="active-row">
                 <td class="table-no">{{ forloop.counter }}</td>
@@ -40,17 +38,15 @@ right:30px; top:60px;">
                 </td>
             </tr>
             {% endfor %}
-            </tbody>
-        </table>
-    </div>
+        </tbody>
+    </table>
+</div>
 {% else %}
 <div class="no-post-comment">
     작성하신 댓글이 없습니다 :(<br>
-        <a href="/market/">게시글 구경하러 가기!</a>
+    <a href="/market/">게시글 구경하러 가기!</a>
 </div>
 {% endif %}
-
-
 
 <!-- 페이징처리 시작 -->
 <ul class="pagination justify-content-center">
