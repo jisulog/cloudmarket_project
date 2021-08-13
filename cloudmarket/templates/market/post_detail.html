@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load humanize %}
 {% block content %}
 
 <br>
@@ -30,7 +30,7 @@
     <br>
     <br>
     <span class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></span>
-    <p class ="label label-default">가격 : <span class="badge">{{ post.price }}</span>원</p>
+    <p class ="label label-default"><span class="badge">{{ post.price|intcomma }}</span>원</p>
     {% if request.user == post.user_id %}
     <a class="btn btn-primary" href="{% url 'market:postupdate' post.id  %}" >수정</a>
     <a class="btn btn-primary" href="{% url 'market:postdelete' post.id  %}" >삭제</a>
