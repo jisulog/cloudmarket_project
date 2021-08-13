@@ -4,17 +4,13 @@ from market.models import Post, Comment
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['post_title', 'image', 'content', 'price']
-
-        widgets = {
-          'post_title': forms.TextInput(attrs={'class': 'form-control'}),
-          'content': forms.Textarea(attrs={'class': 'form-control', 'rows': 10}),
-        }
-        
+        fields = ['post_title', 'image', 'price', 'content']
+                
         labels = {
-            'image': '첨부파일',
-            'content': '내용',
-            'price' : '가격'
+            'post_title' : '글 제목',
+            'image': '파일선택',
+            'price' : '가격',
+            'content': '글 내용'
         }  
 class CommentForm(forms.ModelForm):
     class Meta:
