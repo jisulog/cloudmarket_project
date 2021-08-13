@@ -12,7 +12,6 @@ class PostForm(forms.ModelForm):
         }
         
         labels = {
-            'post_title': '제목',
             'image': '첨부파일',
             'content': '내용',
             'price' : '가격'

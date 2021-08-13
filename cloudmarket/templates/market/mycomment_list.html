@@ -1,25 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<!-- 검색 창 -->
-<div class="row justify-content-end my-3" style="position:fixed; 
-right:30px; top:60px;">
-    <div class="col-4 input-group">
-        <input type="text" style="position:relative; width:1000px;" class="form-control kw" value="{{ kw|default_if_none:'' }}">
-        <!-- 미디어 쿼리 등 반응형 웹 추가 필요 - 창 크기 작아졌을때 검색창은 안 뜨게 -->
-        <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button" id="btn_search">찾기</button>
-        </div>
-    </div>
-</div>
-
 <!--리스트창-->
+<body class="gradation-back">
 {% if page_obj %}
 <div class="container-sm">
     <table class="styled-table">
         <thead>
             <tr>
-                <th colspan="3">{{ user.last_name }}님이 남긴 댓글({{ mycomment|length}})</th>
+                <th colspan="3" class="table-border">{{ user.last_name }}님이 남긴 댓글({{ mycomment|length}})</th>
             </tr>
         </thead>
         <tbody>
@@ -31,7 +20,7 @@ right:30px; top:60px;">
                 </td>
                 <td class="table-date">
                     {% if comment.modify_date %}
-                        {{ comment.modify_date }}           
+                        {{ comment.modify_date|date:'m.d' }}(수정)         
                     {% else %}
                         {{ comment.create_date|date:'m.d' }}
                     {% endif %}
@@ -53,11 +42,11 @@ right:30px; top:60px;">
 <!-- 이전페이지 -->
 {% if page_obj.has_previous %}
 <li class="page-item">
-    <a class="page-link" data-page="{{ page_obj.previous_page_number }}" href="?page={{ page_obj.previous_page_number }}">이전</a>
+    <a class="page-link" data-page="{{ page_obj.previous_page_number }}" href="?page={{ page_obj.previous_page_number }}"><<</a>
 </li>
 {% else %}
 <li class="page-item disabled">
-    <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
+    <a class="page-link" tabindex="-1" aria-disabled="true" href="#"><<</a>
 </li>
 {% endif %}
 <!-- 페이지리스트 -->
@@ -77,16 +66,16 @@ right:30px; top:60px;">
 <!-- 다음페이지 -->
 {% if page_obj.has_next %}
 <li class="page-item">
-    <a class="page-link" data-page="{{ page_obj.next_page_number }}"  href="?page={{ page_obj.next_page_number }}">다음</a>
+    <a class="page-link" data-page="{{ page_obj.next_page_number }}"  href="?page={{ page_obj.next_page_number }}">>></a>
 </li>
 {% else %}
 <li class="page-item disabled">
-    <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+    <a class="page-link" tabindex="-1" aria-disabled="true" href="#">>></a>
 </li>
 {% endif %}
 </ul>
 <!-- 페이징처리 끝/작성 버튼 -->
-
+</body>
 
 
 <!-- 검색 폼  -->

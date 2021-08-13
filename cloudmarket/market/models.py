@@ -11,7 +11,7 @@ class Post(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     post_title = models.CharField(max_length=50)
     # image = models.ImageField(upload_to='img/', blank=True, null=True)
-    image = ProcessedImageField(upload_to='img/', blank=True, null=True, processors=[ResizeToFit(500,500)]) #resize
+    image = ProcessedImageField(upload_to='img/', processors=[ResizeToFit(500,500)]) #resize
     content = models.TextField()
     price = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(10000000)])
     create_date = models.DateTimeField()

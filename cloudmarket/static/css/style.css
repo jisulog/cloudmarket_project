@@ -1,10 +1,17 @@
+#test{
+    height: auto;
+    min-height: 100vh;
+    background: #BE93C5;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #E3F3FD, #fde3f3);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #E3F3FD, #fde3f3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
 .imglist { 
     width: 100px; 
     height: 100px; 
     object-fit: cover; /* 아래에서 다룰 속성값 */ 
     border: 1px solid #000 /* 요소의 크기를 가늠하기위해 추가 */ 
 }
- 
 .pagination a.active {
 background-color: #4791FF;
 color: #fff;
@@ -19,10 +26,15 @@ color: #fff;
   }
 
 .styled-table {
-    margin: 15% 0;
+    margin: 100px 0;
     font-size: 0.9em;
     min-width: 100%;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    border-radius: 20px 20px 0px 0px;
+}
+
+.styled-table thead tr th.table-border{
+    border-radius: 20px 20px 0px 0px;
 }
 
 .styled-table thead tr {
@@ -39,6 +51,10 @@ color: #fff;
     border-bottom: 1px solid #dddddd;
 }
 
+.styled-table tbody tr:nth-of-type(odd) {
+    background-color: #ffffff;
+}
+
 .styled-table tbody tr:nth-of-type(even) {
     background-color: #E3F3FD;
 }
@@ -48,22 +64,23 @@ color: #fff;
     color: #4791FF;
 }
 .styled-table tbody tr td.table-no {
-    width: 5%;
+    width: 20px;
     text-align: center;
 }
 
 .styled-table tbody tr td.table-price{
-    width: 25%;
+    width: 150px;
     text-align: right;
 }
 
 .styled-table tbody tr td.table-date{
-    width: 25%;
+    width: 100px;
     text-align: right;
 }
 
 .no-post-comment {
-    padding: 10%;
+    color:#6c757d;
+    margin: 150px 0;
     text-align: center;
     font-size: 2em;
     min-width: 100%;
