@@ -12,6 +12,7 @@
     <hr width ="500px" align="center">
     <div class="align-right-75">
     {{ post.user_id.last_name }} | {% if post.modify_date %} {{ post.modify_date }}(수정) {% else %} {{ post.create_date }} {% endif %}
+<<<<<<< HEAD
     </div>
     <br>
     <br>
@@ -37,6 +38,23 @@
     {% endif %}
     </div>
     <!-- 댓글 목록 -->
+=======
+<div>
+    <img src="{{ post.image.url }}" alt="{{ post.image }}">
+    <p>{{ post.price }}원</p>
+    <p>{{ post.content }}</p>
+</div>
+
+<div>
+{% if request.user == post.user_id %}
+<a href="{% url 'market:postupdate' post.id  %}">수정</a>
+<a href="{% url 'market:postdelete' post.id  %}">삭제</a>
+{% endif %}
+</div>
+</div>
+
+<!-- 댓글 목록 -->
+>>>>>>> parent of cf049dc (Update front mypost and mycommnet)
 <hr>
 <h5 style="width:500px; margin:auto;">{{ post.comment_set.count }}개의 답변이 있습니다.</h5>
 

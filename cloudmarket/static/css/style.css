@@ -9,6 +9,7 @@
 background-color: #4791FF;
 color: #fff;
 }
+<<<<<<< HEAD
 
 /* 내가 쓴 글, 내가 쓴 댓글 */
 .styled-table tbody tr:nth-of-type(even):hover{
@@ -94,3 +95,6 @@ color: #fff;
     margin:auto;
     text-align:left;
 }
+=======
+  
+>>>>>>> parent of cf049dc (Update front mypost and mycommnet)
