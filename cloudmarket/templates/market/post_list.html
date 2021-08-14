@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load humanize %}
 {% block content %}
 <br>
 <br>
@@ -7,33 +7,44 @@
 <!--리스트창-->
 {% if page_obj %}
     {% for post in page_obj %}
-    <ul>
-        {% if post.image %}
-        <img src = "{{ post.image.url }}" alt="{{ post.image }}"> 
-        {% else %}
-        <p>?? 이미지가 없습니다</p>
-        {% endif %}
-        <ol><a href="/market/{{ post.id }}/">{{ post.post_title }}</a></ol> 
-        <ol>{{ post.price }}원</ol>
-        <ol>{{ post.user_id.last_name }} </ol>
-        <ol>
-            {% if post.modify_date %}
-                <div>{{ post.modify_date }}(수정)</div>             
+    <div class="listmargin">
+     <ul class="float-left">
+        <div class="cols-3">
+            
+         <a href="/market/{{ post.id }}/">
+            {% if post.image %}
+            <img class="imglist rounded" src="{{ post.image.url }}" alt="{{ post.image }}"><br>
             {% else %}
-                <div>{{ post.create_date }}</div>
+            <img class="imglist rounded" src="/static/img/noimage.png" alt="이미지가 없습니다"><br>
             {% endif %}
-        </ol>
-    </ul>
+            
+            <div class="listtext">
+                <h5>{{ post.post_title }}</h5>
+                {{ post.price|intcomma }}원<br>
+                {{ post.user_id.last_name }}<br>
+                {% if post.modify_date %}
+                {{ post.modify_date }}(수정)<br>        
+                {% else %}
+                {{ post.create_date }}
+                {% endif %}
+                
+            </div>
+         </a>
+        </div>
+     </ul>
+    </div>
     {% endfor %}
-    {% else %}
-        <p>게시글이 없습니다.</p>
-    {% endif %}
+    <div class="clearfix"></div>
+{% else %}
+    <p>게시글이 없습니다.</p>
+{% endif %}
 
 <!-- 게시글 작성 버튼 -->
-<div style="position:relative; left:30px;">
-    <a class="btn btn-primary" href="{% url 'market:postcreate' %}" {% if not user.is_authenticated %}hidden{% endif %}>작성</a>
+<div class="rightbutton">
+    <a class="btn btn-primary float-right" href="{% url 'market:postcreate' %}" {% if not user.is_authenticated %}hidden{% endif %}>작성</a>
 </div>
 
+<div class="footer">
 <!-- 페이징처리 시작 -->
 <ul class="pagination justify-content-center">
 
@@ -74,7 +85,7 @@
     </li>
     {% endif %}
 </ul>
-
+</div>
 <!-- 검색 폼  -->
 <form id="searchForm" method="get" action="{% url 'market:postlist' %}">
     <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
