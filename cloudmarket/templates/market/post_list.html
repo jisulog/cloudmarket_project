@@ -11,24 +11,25 @@
      <ul class="float-left">
         <div class="cols-3">
             
-            <a href="/market/{{ post.id }}/">
+         <a href="/market/{{ post.id }}/">
             {% if post.image %}
-            <ol><img class="imglist rounded" src="{{ post.image.url }}" alt="{{ post.image }}"></ol> 
+            <img class="imglist rounded" src="{{ post.image.url }}" alt="{{ post.image }}"><br>
             {% else %}
-            <ol><img class="imglist rounded" src="/static/img/noimage.png" alt="이미지가 없습니다"></ol>
+            <img class="imglist rounded" src="/static/img/noimage.png" alt="이미지가 없습니다"><br>
             {% endif %}
             
             <div class="listtext">
-            <ol><h5>{{ post.post_title }}</h5></ol>
-            <ol>{{ post.price|intcomma }}원</ol>
-            <ol>{{ post.user_id.last_name }}</ol>
-            {% if post.modify_date %}
-            <ol>{{ post.modify_date }}(수정)  </ol>          
-            {% else %}
-            <ol>{{ post.create_date }}</ol>
-            {% endif %}
+                <h5>{{ post.post_title }}</h5>
+                {{ post.price|intcomma }}원<br>
+                {{ post.user_id.last_name }}<br>
+                {% if post.modify_date %}
+                {{ post.modify_date }}(수정)<br>        
+                {% else %}
+                {{ post.create_date }}
+                {% endif %}
+                
             </div>
-            </a>
+         </a>
         </div>
      </ul>
     </div>
