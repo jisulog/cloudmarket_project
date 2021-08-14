@@ -44,7 +44,6 @@
     <a class="btn btn-primary float-right" href="{% url 'market:postcreate' %}" {% if not user.is_authenticated %}hidden{% endif %}>작성</a>
 </div>
 
-<div class="footer">
 <!-- 페이징처리 시작 -->
 <ul class="pagination justify-content-center">
 
@@ -85,7 +84,7 @@
     </li>
     {% endif %}
 </ul>
-</div>
+
 <!-- 검색 폼  -->
 <form id="searchForm" method="get" action="{% url 'market:postlist' %}">
     <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">

@@ -8,11 +8,11 @@
 
 input[type=password] { font-family: sans-serif; }
 
-body{
+body {
     font-family: 'twayair';
 }
 
-/* 배경 */
+/* background */
 #test {
     height: auto;
     min-height: 100vh;
@@ -24,6 +24,14 @@ body{
 /*  textarea */
 textarea {
     resize: none;
+}
+
+
+/* navbar */
+
+
+.toggle-color {
+    color: #6c757d;
 }
 
 /* post_list */
@@ -40,6 +48,7 @@ textarea {
 a:hover {
     text-decoration-line: none;
 }
+
 h5 {
     margin-top: 10px;
 }
@@ -159,6 +168,7 @@ hr {
     width: 85%; 
     text-align: center;
 }
+
 .align-center { 
     text-align: center; 
     margin-top: 20px;
@@ -188,6 +198,7 @@ hr {
     text-align: right;
 }
 
+
 /* comment_update&delete */
 .comupdate1-btn {
     margin-bottom: 5px;
@@ -205,7 +216,6 @@ hr {
 }
 
 
-
 /* comment_create*/
 .comment {
     margin-left: 80px;
@@ -220,15 +230,18 @@ hr {
     white-space:pre-line;
     width: 84%;
 }
+
 #comment-content {
     width: 65%;
     height: 20%;
 }
 
-/* post_create */
+
+/* login&signup */
 .contact{
     padding: 4%;
 }
+
 .col-md-3{
     background: #4791FF;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to bottom, 	#c471ed, #4791FF);  /* Chrome 10-25, Safari 5.1-6 */
@@ -238,15 +251,19 @@ hr {
     border-top-left-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
 }
+
 .contact-info{
     margin-top:10%;
 }
+
 .contact-info img{
     margin-bottom: 10%;
 }
+
 .contact-info h2{
     margin-bottom: 10%;
 }
+
 .col-md-9{
     background: #fff;
     padding: 3%;
@@ -254,50 +271,31 @@ hr {
     border-bottom-right-radius: 0.5rem;
     resize: none;
 }
+
 .contact-form label{
     font-weight:600;
 }
+
 .contact-form button{
     background-color: #4791FF;
     color: #fff;
     font-weight: 600;
     width: 25%;
 }
+
 .contact-form button:focus{
     box-shadow:none;
 }
-
-.btn {
-    position:relative;
-    /* left:40%;
-    transform: translateX(-50%);
-    margin-bottom: 40px;
-    width:80%; */
-    height:40px;
-    background: linear-gradient(125deg,#81ecec,#6c5ce7,#81ecec);
-    background-position: left;
-    background-size: 200%;
-    color:white;
-    font-weight: bold;
-    border:none;
-    cursor:pointer;
-    transition: 0.4s;
-    display:inline;
-  }
   
-  .btn:hover {
-    background-position: right;
-  }
-  
-  .bottomText {
+.bottomText {
     text-align: center;
-  }
+}
 
-  body {
+body {
     background-image: #34495e;
-  }
+}
   
-  .loginForm {
+.loginForm {
     position:absolute;
     width:400px;
     height:400px;
@@ -308,38 +306,38 @@ hr {
     left:50%;
     transform: translate(-50%,-50%);
     border-radius: 15px;
-  }
+}
   
-  .loginForm h2{
+.loginForm h2{
     text-align: center;
     margin: 30px;
-  }
+}
   
-  .idForm{
+.idForm{
     /* border-bottom: 2px solid #adadad; */
     margin: 30px;
     padding: 10px 10px;
-  }
+}
   
-  .passForm{
+.passForm{
     /* border-bottom: 2px solid #adadad; */
     margin: 30px;
     padding: 10px 10px;
-  }
+}
   
-  .tablelogint {
+.tablelogint {
     margin-top:10px;
- }
+}
 
-  .tableloginb {
+.tableloginb {
     margin-bottom:10px; 
-  }
+}
 
-  .tableloginl {
+.tableloginl {
     margin-left:10px; 
-  }
+}
 
-  .signupForm {
+.signupForm {
     position:absolute;
     width:400px;
     height:600px;
@@ -350,20 +348,19 @@ hr {
     left:50%;
     transform: translate(-50%,-50%);
     border-radius: 15px;
-
-  }
+}
   
-  .signupForm h2{
+.signupForm h2{
     text-align: center;
     margin: 30px;
-  }
+}
 
-  .signForm{
+.signForm{
     /* border-bottom: 2px solid #adadad; */
     margin: 0px;
     padding: 5px 5px;
-  }
+}
 
-  .jb-blue{
+.jb-blue{
       color: #6c5ce7;
-  }
+}
