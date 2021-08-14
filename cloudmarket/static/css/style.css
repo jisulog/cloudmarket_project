@@ -156,11 +156,10 @@ h5 {
 .detail-background {
     background-color: #FFF; 
     width: 700px;
-
 }
 
 hr {
-    width: 550px; 
+    width: 85%; 
     text-align: center;
 }
 .align-center { 
@@ -194,7 +193,6 @@ hr {
 
 /* comment_update&delete */
 .comupdate1-btn {
-    margin-top: 10px;
     margin-bottom: 5px;
     margin-right: 95px;
     text-align: right;
@@ -221,6 +219,9 @@ hr {
     margin-bottom: 30px;
 }
 
+#comment-list {
+    width: 84%;
+}
 #comment-content {
     width: 65%;
     height: 20%;

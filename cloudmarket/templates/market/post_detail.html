@@ -49,7 +49,7 @@
     <div class="mt-3">
         <div class="comment py-2 text-muted" id="divToggle1{{ comment.id }}">
             <p>{{ comment.user_id.last_name }} | {% if comment.modify_date %} {{ comment.modify_date }}(수정) {% else %} {{ comment.create_date }} {% endif %}</p>
-            <p>{{ comment.content }}</p>
+            <p id="comment-list">{{ comment.content }}</p>
             {% if request.user == comment.user_id %}
             <div class="comupdate1-btn">
             <input type="button" class="btn btn-primary" value="수정" id="button1{{ comment.id }}">
