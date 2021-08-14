@@ -251,26 +251,6 @@ textarea{
     padding: 10px 10px;
   }
   
-  .id {
-    width: 100%;
-    border:none;
-    outline:none;
-    color: #636e72;
-    font-size:16px;
-    height:25px;
-    background: none;
-  }
-  
-  .pw {
-    width: 100%;
-    border:none;
-    outline:none;
-    color: #636e72;
-    font-size:16px;
-    height:25px;
-    background: none;
-  }
-
   .tablelogint {
     margin-top:10px;
  }
@@ -279,9 +259,13 @@ textarea{
     margin-bottom:10px; 
   }
 
+  .tableloginl {
+    margin-left:10px; 
+  }
+
   .signupForm {
     position:absolute;
-    width:800px;
+    width:400px;
     height:600px;
     padding: 30px, 20px;
     background-color:#FFFFFF;
@@ -290,6 +274,7 @@ textarea{
     left:50%;
     transform: translate(-50%,-50%);
     border-radius: 15px;
+
   }
   
   .signupForm h2{
@@ -301,4 +286,8 @@ textarea{
     /* border-bottom: 2px solid #adadad; */
     margin: 0px;
     padding: 5px 5px;
+  }
+
+  .jb-blue{
+      color: #6c5ce7;
   }

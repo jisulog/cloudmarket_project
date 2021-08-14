@@ -2,7 +2,7 @@
 {% block content %}
 
 <!-- <div class="container my-3" style="position:absolute; top:60px;"> -->
-<div class="container my-3" ></div>
+<div class="container"></div>
     
     <form method="post" class="loginForm" action="{% url 'common:login' %}">
         {% csrf_token %}
@@ -11,14 +11,14 @@
              <h4>로그인</h4>
         </div>
         <div class="idForm">
-            <label for="username">사용자ID</label>
+            <label for="username" class="jb-blue">사용자ID</label>
             <input type="text" class="form-control" name="username" id="username"
-                   value="{{ form.username.value|default_if_none:'' }}">
+                   value="{{ form.username.value|default_if_none:'' }}" placeholder="아이디를 입력해주세요">
         </div>
         <div class="passForm">
-            <label for="password">비밀번호</label>
+            <label for="password" class="jb-blue">비밀번호</label>
             <input type="password" class="form-control" name="password" id="password"
-                   value="{{ form.password.value|default_if_none:'' }}">
+                   value="{{ form.password.value|default_if_none:'' }}" placeholder="비밀번호를 입력해주세요">
         </div>
         <div class="col-12 text-right">
             <span>또는 <a href="{% url 'common:signup' %}">계정을 만드세요.</a></span>
