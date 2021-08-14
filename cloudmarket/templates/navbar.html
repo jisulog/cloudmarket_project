@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <!-- 로고 -->
         <a class="navbar-brand" href="{% url 'market:postlist' %}">
-            <img src="/static/img/cloudlogo.png" width="90" height="58" alt="cloudmarketlogo">
+            <img src="/static/img/cloudlogo.png" width="95" height="61" alt="cloudmarketlogo">
         </a>
 
         <!-- 검색 창 -->
@@ -15,7 +15,7 @@
         </div>
 
         <!-- 드롭 다운  -->
-        <span class="mystatus">
+        <span class="col-3 mystatus">
             <ul class="navbar-nav">
 
             {% if user.is_authenticated %}
@@ -40,7 +40,7 @@
             </ul>
         </div>
     
-        <!-- 메뉴바 -->
+        <!-- 토글바 없애도 됩니다 무쓸모 해졌어욤-->
         <button class="navbar-toggler toggle-color" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button> 
