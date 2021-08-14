@@ -1,10 +1,8 @@
 {% extends 'base.html' %}
 {% load humanize %}
 {% block content %}
-
 <br>
 <br>
-
 <div class="container rounded detail-background">
     <br>
     <div class="align-center">
@@ -41,8 +39,8 @@
 <hr>
 
     <!-- 댓글 목록 -->
-    <h5 class="comment">{{ post.comment_set.count }}개의 댓글이 있습니다.</h5>
-<hr>
+    <h5 class="comment"><span class="detail-comment-count">{{ post.comment_set.count }}</span>개의 댓글이 있습니다.</h5>
+
 
     <!-- 댓글 수정 -->
     {% for comment in post.comment_set.all %}
@@ -83,47 +81,4 @@
     </form>
     </div>
 </div>
-
-<!-- 검색 폼  -->
-<form id="searchForm" method="get" action="{% url 'market:postlist' %}">
-    <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
-    <input type="hidden" id="page" name="page" value="{{ page }}">
-</form>
-
-{% endblock %}
-{% block script %}
-<script type='text/javascript'>
-
-    $(document).ready(function () {
-        $(".page-link").on('click', function () {
-            $("#page").val($(this).data("page"));
-            $("#searchForm").submit();
-        });
-
-        $("#btn_search").on('click', function () {
-            $("#kw").val($(".kw").val());
-            $("#page").val(1);  // 검색버튼을 클릭할 경우 1페이지부터 조회한다.
-            $("#searchForm").submit();
-        });
-    });
-    // 댓글
-    $(document).ready(function (){ $("[id^=button1]").click(
-        function (e){ 
-            var target = $(e.target);
-            target.parent().parent().toggle();
-            target.parent().parent().next().toggle();
-            // $("[id^=divToggle2]").toggle(); 
-            // $("[id^=divToggle1]").toggle(); 
-        }); 
-    });
-    $(document).ready(function (){ $("[id^=button2]").click(
-        function (e){    
-            var target = $(e.target);
-            target.parent().parent().parent().toggle();
-            target.parent().parent().parent().prev().toggle();
-            // $("[id^=divToggle1]").toggle();
-            // $("[id^=divToggle2]").toggle(); 
-        });
-    });
-</script>
 {% endblock %}

@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% block content %}
 <!--리스트창-->
 <body class="gradation-back">
@@ -76,33 +75,4 @@
 </ul>
 <!-- 페이징처리 끝/작성 버튼 -->
 </body>
-
-
-<!-- 검색 폼  -->
-<form id="searchForm" method="get" action="{% url 'market:postlist' %}">
-<input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
-<input type="hidden" id="page" name="page" value="{{ page }}">
-</form>
-
-
-{% endblock %}
-{% block script %}
-<script type='text/javascript'>
-//console.log('자바스크립트 초입');
-//document.write('자바스크립트 초입');
-$(document).ready(function(){
-$(".page-link").on('click', function() {
-    $("#page").val($(this).data("page"));
-    $("#searchForm").submit();
-});
-
-$("#btn_search").on('click', function() {
-    //console.log('버튼 입력');
-    //document.write('버튼 입력');
-    $("#kw").val($(".kw").val());
-    $("#page").val(1);  // 검색버튼을 클릭할 경우 1페이지부터 조회한다.
-    $("#searchForm").submit();
-});
-});
-</script>
 {% endblock %}
