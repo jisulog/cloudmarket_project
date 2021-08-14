@@ -1,3 +1,14 @@
+/* 폰트 */
+@font-face {
+    font-family: 'twayair';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twayair.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+    font-family: 'twayair';
+}
 /* 배경 */
 #test{
     height: auto;
@@ -28,7 +39,7 @@ textarea{
 
 /* 내가 쓴 글, 내가 쓴 댓글 */
 .styled-table tbody tr:nth-of-type(even):hover{
-    background-color: #fde3f3
+    background-color: #f0f0f0
 }
 .styled-table tbody tr:nth-of-type(odd):hover {
     background-color: #f0f0f0
@@ -44,7 +55,7 @@ textarea{
 
 .styled-table {
     margin: 100px 0;
-    font-size: 0.9em;
+    font-size: 1em;
     min-width: 100%;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     border-radius: 20px 20px 0px 0px;
@@ -77,6 +88,16 @@ textarea{
     text-align: center;
 }
 
+.styled-table tbody tr td.table-content {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* 라인수 */
+    -webkit-box-orient: vertical; 
+    word-wrap:break-word; 
+    line-height: 2.5em; 
+}
+
 .styled-table tbody tr td.table-price{
     width: 150px;
     text-align: right;
@@ -94,13 +115,12 @@ textarea{
     font-size: 2em;
     min-width: 100%;
 }
-/* 내가 쓴 글, 내가 쓴 댓글 끝 */
 
 /* 디테일 */
 
 .align-center { text-align: center; }
-.align-right-75 {
 
+.align-right-75 {
     width : 75%; 
     text-align: right; 
 }
@@ -122,10 +142,12 @@ textarea{
     width:500px;
     margin:auto;
     text-align:left;
+    white-space:pre-line;
 }
 
-/* 디테일 끝 */
-
+.comment-pre-line{
+    white-space:pre-line;
+}
 
 /* 게시글 등록 */
 .contact{
