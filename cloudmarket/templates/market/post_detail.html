@@ -21,10 +21,6 @@
     {% else %}
         <p>?? 이미지가 없습니다</p>
     {% endif %}
-    
-    <br> 
-    <br>
-    
     <div class="most-used-csh">
         {{ post.content }}</div>
     <br>
@@ -45,7 +41,7 @@
 <div class="mt-3" style="width:500px; margin:auto; text-align:left;">
     <div class="comment py-2 text-muted" id="divToggle1{{ comment.id }}" style="display: block;  margin:auto;" name="divToggle1{{ comment.id }}">
             {{ comment.user_id.last_name }} | {% if comment.modify_date %} {{ comment.modify_date }}(수정) {% else %} {{ comment.create_date }} {% endif %}<br>
-            <div class="comment-pre-line">{{ comment.content }}</div><br>
+            <div class="comment-pre">{{ comment.content }}</div><br>
             {% if request.user == comment.user_id %}
             <input type="button" class="btn btn-primary" value="수정" id="button1{{ comment.id }}" style="margin: 0% 0% 0% 70%; white-space: nowrap;">
             <a class="btn btn-primary" href="{% url 'market:commentdelete' comment.id  %}" >삭제</a>

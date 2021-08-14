@@ -37,6 +37,10 @@ textarea{
     resize: none;
 }
 
+.button-text-align{
+    text-align: right;
+}
+
 /* 내가 쓴 글, 내가 쓴 댓글 */
 .styled-table tbody tr:nth-of-type(even):hover{
     background-color: #f0f0f0
@@ -145,8 +149,8 @@ textarea{
     white-space:pre-line;
 }
 
-.comment-pre-line{
-    white-space:pre-line;
+.comment-pre{
+    white-space:pre;
 }
 
 /* 게시글 등록 */
@@ -154,7 +158,7 @@ textarea{
     padding: 4%;
 }
 .col-md-3{
-    background: #12c2e9;  /* fallback for old browsers */
+    background: #4791FF;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to bottom, 	#c471ed, #4791FF);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to bottom, 	#c471ed, #4791FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     padding: 4%;
@@ -166,7 +170,7 @@ textarea{
     margin-top:10%;
 }
 .contact-info img{
-    margin-bottom: 15%;
+    margin-bottom: 10%;
 }
 .contact-info h2{
     margin-bottom: 10%;
@@ -180,13 +184,4 @@ textarea{
 }
 .contact-form label{
     font-weight:600;
-}
-.contact-form button{
-    background-color: #4791FF;
-    color: #fff;
-    font-weight: 600;
-    width: 25%;
-}
-.contact-form button:focus{
-    box-shadow:none;
 }
