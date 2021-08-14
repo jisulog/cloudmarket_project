@@ -130,12 +130,12 @@ h5 {
 .detail-background {
     background-color: #FFF; 
     width: 700px;
-    /* border: 1px solid #6c757d */
+
 }
 
 hr {
     width: 550px; 
-    align: center;
+    text-align: center;
 }
 .align-center { 
     text-align: center; 
@@ -145,8 +145,11 @@ hr {
 
 .align-right-90 {
     width : 90%; 
-    /* 위치이동 조절 */
     text-align: right; 
+}
+
+.detail-price {
+    font-size: x-large;
 }
 
 .detail-content {
@@ -158,20 +161,42 @@ hr {
 .detail-btn {
     margin-top: 30px;
     margin-bottom: 20px;
-    margin-right: 60px;
+    margin-right: 95px;
     text-align: right;
 }
 
-.imgdetail {
-    width: 300px; 
-    height: 300px; 
-    object-fit: contain;
+/* comment_update&delete */
+.comupdate1-btn {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    margin-right: 95px;
+    text-align: right;
 }
 
-/* comment */
+.comupdate2-btn {
+    text-align: right;
+    margin-right: 95px;
+}
+
+.com-hidden {
+    display: none;
+}
+
+
+
+/* comment_create*/
 .comment {
-    width: 500px; 
-    margin: auto;
+    margin-left: 80px;
+}
+
+.comcreate-btn {
+    margin-left: 10;
+    margin-bottom: 30px;
+}
+
+#comment-content {
+    width: 65%;
+    height: 20%;
 }
 
 /* post_create */
