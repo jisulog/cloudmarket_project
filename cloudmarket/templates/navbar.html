@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg">
-    
+
     <div class="container-fluid">
         <!-- 로고 -->
         <a class="navbar-brand" href="{% url 'market:postlist' %}">
@@ -17,34 +17,33 @@
         <!-- 드롭 다운  -->
         <span class="col-3 mystatus">
             <ul class="navbar-nav">
-
-            {% if user.is_authenticated %}
-            <div>
-                <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {% if user.is_authenticated %}
+                <div>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ user.last_name }}님
                         </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{% url 'common:logout' %}">로그아웃</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{% url 'market:mypostlist' %}">내가 쓴 게시글</a>
-                    <a class="dropdown-item" href="{% url 'market:mycommentlist' %}">내가 쓴 댓글</a>
-                    </div>
-                </li>
-            </span>
-            {% else %}
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'common:logout' %}">로그아웃</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'market:mypostlist' %}">내가 쓴 게시글</a>
+                            <a class="dropdown-item" href="{% url 'market:mycommentlist' %}">내가 쓴 댓글</a>
+                        </div>
+                    </li>
+                </div>
+                {% else %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'common:login' %}">로그인</a>
                 </li>
-            {% endif %}
+                {% endif %}
+
             </ul>
         </div>
-    
-        <!-- 토글바 없애도 됩니다 무쓸모 해졌어욤-->
-        <button class="navbar-toggler toggle-color" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button> 
-        
     </div>
 </nav>
-
+<!-- 검색 폼  -->
+<form id="searchForm" method="get" action="{% url 'market:postlist' %}">
+    <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
+    <input type="hidden" id="page" name="page" value="{{ page }}">
+</form>
