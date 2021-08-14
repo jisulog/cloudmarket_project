@@ -15,8 +15,8 @@
             {% for comment in page_obj %}
             <tr class="active-row">
                 <td class="table-no">{{ forloop.counter }}</td>
-                <td>
-                    <a href="{% url 'market:postdetail' comment.post_id.id  %}">{{ comment.content }}</a></span>
+                <td class="table-content">
+                    <a href="{% url 'market:postdetail' comment.post_id.id  %}#divToggle1{{ comment.id }}">{{ comment.content }}</a></span>
                 </td>
                 <td class="table-date">
                     {% if comment.modify_date %}

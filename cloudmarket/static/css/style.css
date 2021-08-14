@@ -1,3 +1,15 @@
+/* 폰트 */
+@font-face {
+    font-family: 'twayair';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twayair.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+    font-family: 'twayair';
+}
+
 /* 배경 */
 #test {
     height: auto;
@@ -54,10 +66,14 @@ h5 {
     margin-right: 80px;
 }
 
+.button-text-align{
+    text-align: right;
+}
+
 
 /* mypost, mycomment */
-.styled-table tbody tr:nth-of-type(even):hover {
-    background-color: #fde3f3
+.styled-table tbody tr:nth-of-type(even):hover{
+    background-color: #f0f0f0
 }
 
 .styled-table tbody tr:nth-of-type(odd):hover {
@@ -74,7 +90,7 @@ h5 {
 
 .styled-table {
     margin: 100px 0;
-    font-size: 0.9em;
+    font-size: 1em;
     min-width: 100%;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     border-radius: 20px 20px 0px 0px;
@@ -105,6 +121,16 @@ h5 {
 .styled-table tbody tr td.table-no {
     width: 20px;
     text-align: center;
+}
+
+.styled-table tbody tr td.table-content {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* 라인수 */
+    -webkit-box-orient: vertical; 
+    word-wrap:break-word; 
+    line-height: 2.5em; 
 }
 
 .styled-table tbody tr td.table-price{
@@ -156,6 +182,7 @@ hr {
     width:500px;
     margin:auto;
     text-align:left;
+    white-space:pre-line;
 }
 
 .detail-btn {
@@ -204,7 +231,7 @@ hr {
     padding: 4%;
 }
 .col-md-3{
-    background: #12c2e9;  /* fallback for old browsers */
+    background: #4791FF;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to bottom, 	#c471ed, #4791FF);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to bottom, 	#c471ed, #4791FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     padding: 4%;
@@ -216,7 +243,7 @@ hr {
     margin-top:10%;
 }
 .contact-info img{
-    margin-bottom: 15%;
+    margin-bottom: 10%;
 }
 .contact-info h2{
     margin-bottom: 10%;
@@ -230,13 +257,4 @@ hr {
 }
 .contact-form label{
     font-weight:600;
-}
-.contact-form button{
-    background-color: #4791FF;
-    color: #fff;
-    font-weight: 600;
-    width: 25%;
-}
-.contact-form button:focus{
-    box-shadow:none;
 }
