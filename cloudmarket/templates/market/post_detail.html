@@ -4,6 +4,7 @@
 <br>
 <br>
 <div class="container rounded detail-background">
+    <!-- 게시글 -->
     <br>
     <div class="align-center">
         <h3 class="align-center">{{ post.post_title }}</h3>
@@ -36,12 +37,10 @@
         {% endif %}
     </div>
     
-<hr>
+ <hr>
 
     <!-- 댓글 목록 -->
     <h5 class="comment"><span class="detail-comment-count">{{ post.comment_set.count }}</span>개의 댓글이 있습니다.</h5>
-
-
     <!-- 댓글 수정 -->
     {% for comment in post.comment_set.all %}
     <div class="mt-3">
@@ -67,7 +66,7 @@
         {% endif %}
         
     </div>
-<hr>
+ <hr>
     {% endfor %}
 
     <!-- 댓글 작성 -->

@@ -9,9 +9,10 @@
 /* 비밀번호 */
 input[type=password]:valid { font-family: sans-serif; }
 
-body{
+body {
     font-family: 'twayair';
 }
+
 
 /* 배경 */
 #bg-gradation {
@@ -27,6 +28,7 @@ textarea {
     resize: none;
 }
 
+
 /* post_list */
 .imglist { 
     width: 300px; 
@@ -41,6 +43,7 @@ textarea {
 a:hover {
     text-decoration-line: none;
 }
+
 h5 {
     margin-top: 10px;
 }
@@ -68,6 +71,7 @@ h5 {
     margin-left: 10px;
     margin-right: 80px;
 }
+
 
 /* mypost, mycomment */
 .styled-table tbody tr:nth-of-type(even):hover{
@@ -159,6 +163,7 @@ hr {
     width: 85%; 
     text-align: center;
 }
+
 .align-center { 
     text-align: center; 
     margin-top: 20px;
@@ -191,6 +196,7 @@ hr {
     text-align: right;
 }
 
+
 /* comment_update&delete */
 .comupdate1-btn {
     margin-bottom: 5px;
@@ -208,7 +214,6 @@ hr {
 }
 
 
-
 /* comment_create*/
 .comment {
     margin-left: 80px;
@@ -223,15 +228,18 @@ hr {
     white-space:pre-line;
     width: 84%;
 }
+
 #comment-content {
     width: 65%;
     height: 20%;
 }
 
-/* post_create */
+
+/* login&signup */
 .contact{
     padding: 4%;
 }
+
 .col-md-3{
     background: #4791FF;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to bottom, 	#c471ed, #4791FF);  /* Chrome 10-25, Safari 5.1-6 */
@@ -241,15 +249,19 @@ hr {
     border-top-left-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
 }
+
 .contact-info{
     margin-top:10%;
 }
+
 .contact-info img{
     margin-bottom: 10%;
 }
+
 .contact-info h2{
     margin-bottom: 10%;
 }
+
 .col-md-9{
     background: #fff;
     padding: 3%;
@@ -257,15 +269,18 @@ hr {
     border-bottom-right-radius: 0.5rem;
     resize: none;
 }
+
 .contact-form label{
     font-weight:600;
 }
+
 .contact-form button{
     background-color: #4791FF;
     color: #fff;
     font-weight: 600;
     width: 25%;
 }
+
 .contact-form button:focus{
     box-shadow:none;
 }
@@ -386,3 +401,4 @@ hr {
     border-top-right-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
 }
+
