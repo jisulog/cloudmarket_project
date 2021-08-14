@@ -1,46 +1,47 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container">
-    <div class="row my-3">
-        <div class="col-4">
-            <h4>계정생성</h4>
-        </div>
-        <div class="col-8 text-right">
-            <span>또는 <a href="{% url 'common:login' %}">로그인 하세요.</a></span>
-        </div>
-    </div>
-    <form method="post" class="post-form" action="{% url 'common:signup' %}">
+    
+    <form method="post" class="signupForm" action="{% url 'common:signup' %}">
         {% csrf_token %}
         {% include "form_errors.html" %}
-        <div class="form-group">
-            <label for="username">아이디</label>
+        <div class="row my-3">
+            <div class="col-4" class="tableloginl">
+                <h4>계정생성</h4>
+            </div>
+            <div class="col-8 text-right">
+                <span>또는 <a href="{% url 'common:login' %}">로그인 하세요.</a></span>
+            </div>
+        </div>
+        <div class="signForm" >
+            <label for="username" class="jb-blue">아이디</label>
             <input type="text" class="form-control" name="username" id="username"
-                   value="{{ form.username.value|default_if_none:'' }}">
+                   value="{{ form.username.value|default_if_none:'' }}" placeholder="아이디를 입력해주세요">
         </div>
-        <div class="form-group">
-            <label for="password1">비밀번호</label>
+        <div class="signForm">
+            <label for="password1"class="jb-blue">비밀번호</label>
             <input type="password" class="form-control" name="password1" id="password1"
-                   value="{{ form.password1.value|default_if_none:'' }}">
+                   value="{{ form.password1.value|default_if_none:'' }}" placeholder="비밀번호를 입력해주세요">
         </div>
-        <div class="form-group">
-            <label for="password2">비밀번호 확인</label>
+        <div class="signForm">
+            <label for="password2"class="jb-blue">비밀번호 확인</label>
             <input type="password" class="form-control" name="password2" id="password2"
-                   value="{{ form.password2.value|default_if_none:'' }}">
+                   value="{{ form.password2.value|default_if_none:'' }}" placeholder="비밀번호를 다시 입력해주세요">
         </div>
-        <div class="form-group">
-            <label for="last_name">이름</label>
+        <div class="signForm">
+            <label for="last_name"class="jb-blue">이름</label>
             <input type="text" class="form-control" name="last_name" id="last_name"
-                   value="{{ form.last_name.value|default_if_none:'' }}">
+                   value="{{ form.last_name.value|default_if_none:'' }}" placeholder="이름을 입력해주세요">
         </div>
-        <div class="form-group">
-            <label for="phone">전화번호</label>
+        <div class="signForm">
+            <label for="phone"class="jb-blue">전화번호</label>
             <input type="text" class="form-control" name="phone" id="phone"
-                   value="{{ form.phone.value|default_if_none:'' }}">
+                   value="{{ form.phone.value|default_if_none:'' }}" placeholder="전화번호를 입력해주세요">
         </div>
-        <div class="form-group">
-            <label for="address">주소</label>
+        <div class="signForm">
+            <label for="address"class="jb-blue">주소</label>
             <input type="text" class="form-control" name="address" id="address"
-                   value="{{ form.address.value|default_if_none:'' }}">
+                   value="{{ form.address.value|default_if_none:'' }}" placeholder="주소를 입력해주세요">
         </div>
         <button type="submit" class="btn btn-primary">생성하기</button>
     </form>

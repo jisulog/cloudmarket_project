@@ -6,6 +6,8 @@
     font-style: normal;
 }
 
+input[type=password] { font-family: sans-serif; }
+
 body{
     font-family: 'twayair';
 }
@@ -23,7 +25,6 @@ body{
 textarea {
     resize: none;
 }
-/* navbar */
 
 /* post_list */
 .imglist { 
@@ -66,11 +67,6 @@ h5 {
     margin-left: 10px;
     margin-right: 80px;
 }
-
-.button-text-align{
-    text-align: right;
-}
-
 
 /* mypost, mycomment */
 .styled-table tbody tr:nth-of-type(even):hover{
@@ -140,7 +136,7 @@ h5 {
 }
 
 .styled-table tbody tr td.table-date{
-    width: 100px;
+    width: 130px;
     text-align: right;
 }
 
@@ -221,6 +217,7 @@ hr {
 }
 
 #comment-list {
+    white-space:pre-line;
     width: 84%;
 }
 #comment-content {
@@ -260,3 +257,113 @@ hr {
 .contact-form label{
     font-weight:600;
 }
+.contact-form button{
+    background-color: #4791FF;
+    color: #fff;
+    font-weight: 600;
+    width: 25%;
+}
+.contact-form button:focus{
+    box-shadow:none;
+}
+
+.btn {
+    position:relative;
+    /* left:40%;
+    transform: translateX(-50%);
+    margin-bottom: 40px;
+    width:80%; */
+    height:40px;
+    background: linear-gradient(125deg,#81ecec,#6c5ce7,#81ecec);
+    background-position: left;
+    background-size: 200%;
+    color:white;
+    font-weight: bold;
+    border:none;
+    cursor:pointer;
+    transition: 0.4s;
+    display:inline;
+  }
+  
+  .btn:hover {
+    background-position: right;
+  }
+  
+  .bottomText {
+    text-align: center;
+  }
+
+  body {
+    background-image: #34495e;
+  }
+  
+  .loginForm {
+    position:absolute;
+    width:400px;
+    height:400px;
+    padding: 30px, 20px;
+    background-color:#FFFFFF;
+    text-align:center;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+  }
+  
+  .loginForm h2{
+    text-align: center;
+    margin: 30px;
+  }
+  
+  .idForm{
+    /* border-bottom: 2px solid #adadad; */
+    margin: 30px;
+    padding: 10px 10px;
+  }
+  
+  .passForm{
+    /* border-bottom: 2px solid #adadad; */
+    margin: 30px;
+    padding: 10px 10px;
+  }
+  
+  .tablelogint {
+    margin-top:10px;
+ }
+
+  .tableloginb {
+    margin-bottom:10px; 
+  }
+
+  .tableloginl {
+    margin-left:10px; 
+  }
+
+  .signupForm {
+    position:absolute;
+    width:400px;
+    height:600px;
+    padding: 30px, 20px;
+    background-color:#FFFFFF;
+    text-align:center;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+
+  }
+  
+  .signupForm h2{
+    text-align: center;
+    margin: 30px;
+  }
+
+  .signForm{
+    /* border-bottom: 2px solid #adadad; */
+    margin: 0px;
+    padding: 5px 5px;
+  }
+
+  .jb-blue{
+      color: #6c5ce7;
+  }
