@@ -107,14 +107,11 @@
         });
     });
     // 댓글
-    $('div').each(function(index, value) {
-        console.log(`div${index}: ${this.id}`);
-    });
     $(document).ready(function (){ $("[id^=button1]").click(
         function (e){ 
             var target = $(e.target);
-            target.parent().toggle();
-            target.parent().next().toggle();
+            target.parent().parent().toggle();
+            target.parent().parent().next().toggle();
             // $("[id^=divToggle2]").toggle(); 
             // $("[id^=divToggle1]").toggle(); 
         }); 
@@ -122,8 +119,8 @@
     $(document).ready(function (){ $("[id^=button2]").click(
         function (e){    
             var target = $(e.target);
-            target.parent().parent().toggle();
-            target.parent().parent().prev().toggle();
+            target.parent().parent().parent().toggle();
+            target.parent().parent().parent().prev().toggle();
             // $("[id^=divToggle1]").toggle();
             // $("[id^=divToggle2]").toggle(); 
         });
