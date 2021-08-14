@@ -5,73 +5,84 @@
 <br>
 <br>
 
-<div class="container" style="background-color: #FFFFFF; width:700px;">
+<div class="container rounded detail-background">
     <br>
     <div class="align-center">
-    <h3 class="align-center"><cite>{{ post.post_title }}</cite></h3>
-    <hr width ="500px" text-align="center">
-    <div class="align-right-75">
-    {{ post.user_id.last_name }} | {% if post.modify_date %} {{ post.modify_date }}(수정) {% else %} {{ post.create_date }} {% endif %} 
-    </div>
-    <br>
-    <br>
-    
-    {% if post.image %}
-        <img src = "{{ post.image.url }}" alt="{{ post.image }}"> 
-    {% else %}
-        <p>?? 이미지가 없습니다</p>
-    {% endif %}
-    
-    <br> 
-    <br>
-    
-    <div class="most-used-csh">
-        {{ post.content }}</div>
-    <br>
-    <br>
-    <span class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></span>
-    <p class ="label label-default"><span class="badge">{{ post.price|intcomma }}</span>원</p>
-    {% if request.user == post.user_id %}
-    <a class="btn btn-primary" href="{% url 'market:postupdate' post.id  %}" >수정</a>
-    <a class="btn btn-primary" href="{% url 'market:postdelete' post.id  %}" >삭제</a>
-    {% endif %}
-    </div>
-<!-- 댓글 -->
-<hr>
-<h5 style="width:500px; margin:auto;">{{ post.comment_set.count }}개의 답변이 있습니다.</h5>
+        <h3 class="align-center">{{ post.post_title }}</h3>
+        <hr>
+        <div class="align-right-90">
+         {{ post.user_id.last_name }} | {% if post.modify_date %} {{ post.modify_date }}(수정) {% else %} {{ post.create_date }} {% endif %} 
+        </div>
 
-<!-- 댓글 목록과 수정 -->
-{% for comment in post.comment_set.all %}
-<div class="mt-3" style="width:500px; margin:auto; text-align:left;">
-    <div class="comment py-2 text-muted" id="divToggle1{{ comment.id }}" style="display: block;  margin:auto;" name="divToggle1{{ comment.id }}">
-            {{ comment.user_id.last_name }} | {% if comment.modify_date %} {{ comment.modify_date }}(수정) {% else %} {{ comment.create_date }} {% endif %}<br>
-            <div class="comment-pre-line">{{ comment.content }}</div><br>
-            {% if request.user == comment.user_id %}
-            <input type="button" class="btn btn-primary" value="수정" id="button1{{ comment.id }}" style="margin: 0% 0% 0% 70%; white-space: nowrap;">
-            <a class="btn btn-primary" href="{% url 'market:commentdelete' comment.id  %}" >삭제</a>
+        <br>
+        <br>
+        
+        {% if post.image %}
+         <img src="{{ post.image.url }}" alt="{{ post.image }}"> 
+        {% else %}
+         <img src="/static/img/noimage.png" alt="이미지가 없습니다">
+        {% endif %}
+        
+        <br> 
+        <br>
+
+        <p class="detail-price">{{ post.price|intcomma }}원</p>
+        <br>
+        <div class="detail-content">{{ post.content }}</div>
+
+        {% if request.user == post.user_id %}
+        <div class="detail-btn">
+            <a class="btn btn-primary" href="{% url 'market:postupdate' post.id  %}" >수정</a>
+            <a class="btn btn-primary" href="{% url 'market:postdelete' post.id  %}" >삭제</a>
+        </div>
+        {% endif %}
     </div>
-    <div class="comment py-2 text-muted" id="divToggle2{{ comment.id }}" style="display: none;">
-    <form method="post" class="post-form my-3" action="{% url 'market:commentupdate' comment.pk %}">
+    
+<hr>
+
+    <!-- 댓글 목록 -->
+    <h5 class="comment">{{ post.comment_set.count }}개의 댓글이 있습니다.</h5>
+<hr>
+
+    <!-- 댓글 수정 -->
+    {% for comment in post.comment_set.all %}
+    <div class="mt-3">
+        <div class="comment py-2 text-muted" id="divToggle1{{ comment.id }}">
+            <p>{{ comment.user_id.last_name }} | {% if comment.modify_date %} {{ comment.modify_date }}(수정) {% else %} {{ comment.create_date }} {% endif %}</p>
+            <p id="comment-list">{{ comment.content }}</p>
+            {% if request.user == comment.user_id %}
+            <div class="comupdate1-btn">
+            <input type="button" class="btn btn-primary" value="수정" id="button1{{ comment.id }}">
+            <a class="btn btn-primary" href="{% url 'market:commentdelete' comment.id  %}" >삭제</a>
+            </div>
+        </div>
+        <div class="comment py-2 text-muted com-hidden" id="divToggle2{{ comment.id }}">
+            <form method="post" class="post-form my-3" action="{% url 'market:commentupdate' comment.pk %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="comupdate2-btn">
+                <input type="submit" class="btn btn-primary" value="저장">
+                <input type="button" class="btn btn-primary" value="이전" id="button2{{ comment.id }}">
+                </div>
+            </form>
+        </div>
+        {% endif %}
+        
+    </div>
+<hr>
+    {% endfor %}
+
+    <!-- 댓글 작성 -->
+    <br>
+    <form action="{% url 'market:commentcreate' post.id  %}" method="post" {% if not user.is_authenticated %}hidden{% endif %}
+    class="most-used-csh">
         {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" class="btn btn-primary" value="저장">
-        <input type="button" class="btn btn-primary" value="이전" id="button2{{ comment.id }}">
+        {% include "form_errors.html" %}
+        <textarea class="comment" name="content" id="comment-content" value="{{ form.username.value|default_if_none:'' }}"required></textarea>
+        <input type="submit" class="btn btn-primary comcreate-btn" name='create' id='create' value="등록">
     </form>
     </div>
-    {% endif %}
-    <hr>
 </div>
-{% endfor %}
-<!-- 댓글 작성 -->
-<form action="{% url 'market:commentcreate' post.id  %}" method="post" {% if not user.is_authenticated %}hidden{% endif %}
-class="most-used-csh">
-    {% csrf_token %}
-    {% include "form_errors.html" %}
-    <textarea style="width:500px;" name="content" id="content" rows="2" cols="30" value="{{ form.username.value|default_if_none:'' }}"required></textarea><br>
-    <input style="margin: 0% 0% 0% 88%;"type="submit" class="btn btn-primary" name='create' id='create' value="등록">
-</form>
-</div>
-
 
 <!-- 검색 폼  -->
 <form id="searchForm" method="get" action="{% url 'market:postlist' %}">

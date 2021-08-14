@@ -9,8 +9,9 @@
 body{
     font-family: 'twayair';
 }
+
 /* 배경 */
-#test{
+#test {
     height: auto;
     min-height: 100vh;
     background: #BE93C5;  /* fallback for old browsers */
@@ -18,32 +19,67 @@ body{
     background: linear-gradient(to bottom, #E3F3FD, #fde3f3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-/* 이미지 */
-.imglist { 
-    width: 100px; 
-    height: 100px; 
-    object-fit: cover; /* 아래에서 다룰 속성값 */ 
-    border: 1px solid #000 /* 요소의 크기를 가늠하기위해 추가 */ 
-}
-
-/* 페이징 */
-.pagination a.active {
-background-color: #4791FF;
-color: #fff;
-}
-
 /*  textarea */
-textarea{
+textarea {
     resize: none;
 }
+/* navbar */
 
-/* 내가 쓴 글, 내가 쓴 댓글 */
+/* post_list */
+.imglist { 
+    width: 300px; 
+    height: 300px; 
+    object-fit: cover;
+}
+
+.listmargin {
+    margin-left: 110px;
+}
+
+a:hover {
+    text-decoration-line: none;
+}
+h5 {
+    margin-top: 10px;
+}
+
+.listtext {
+    color: black;   
+    padding: none;
+}
+
+.clearfix{
+    clear: both;
+}
+
+.footer {
+    margin-top: 100px;
+    height: 20px;
+    margin-bottom: 40px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.rightbutton {
+    margin-top: 30px;
+    margin-bottom: 50px;
+    margin-left: 10px;
+    margin-right: 80px;
+}
+
+.button-text-align{
+    text-align: right;
+}
+
+
+/* mypost, mycomment */
 .styled-table tbody tr:nth-of-type(even):hover{
     background-color: #f0f0f0
 }
+
 .styled-table tbody tr:nth-of-type(odd):hover {
     background-color: #f0f0f0
-  }
+}
 
 .styled-table tbody tr:nth-of-type(odd) {
     background-color: #ffffff;
@@ -116,45 +152,88 @@ textarea{
     min-width: 100%;
 }
 
-/* 디테일 */
 
-.align-center { text-align: center; }
-
-.align-right-75 {
-    width : 75%; 
-    text-align: right; 
+/* post_detail */
+.detail-background {
+    background-color: #FFF; 
+    width: 700px;
 }
-.bluecolormapping{
-    background-color: #4791FF;
-    color: #fff;
-    width: 100%;
+
+hr {
+    width: 85%; 
     text-align: center;
 }
-
-.pasdasd-left {
-    margin-left : 27%;
-    width : 500px;
-    text-align : left;
-    
+.align-center { 
+    text-align: center; 
+    margin-top: 20px;
+    margin-bottom: 30px;
 }
 
-.most-used-csh{
+.align-right-90 {
+    width : 90%; 
+    text-align: right; 
+}
+
+.detail-price {
+    font-size: x-large;
+}
+
+.detail-content {
     width:500px;
     margin:auto;
     text-align:left;
     white-space:pre-line;
 }
 
-.comment-pre-line{
-    white-space:pre-line;
+.detail-btn {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    margin-right: 95px;
+    text-align: right;
 }
 
-/* 게시글 등록 */
+/* comment_update&delete */
+.comupdate1-btn {
+    margin-bottom: 5px;
+    margin-right: 95px;
+    text-align: right;
+}
+
+.comupdate2-btn {
+    text-align: right;
+    margin-right: 95px;
+}
+
+.com-hidden {
+    display: none;
+}
+
+
+
+/* comment_create*/
+.comment {
+    margin-left: 80px;
+}
+
+.comcreate-btn {
+    margin-left: 10;
+    margin-bottom: 30px;
+}
+
+#comment-list {
+    width: 84%;
+}
+#comment-content {
+    width: 65%;
+    height: 20%;
+}
+
+/* post_create */
 .contact{
     padding: 4%;
 }
 .col-md-3{
-    background: #12c2e9;  /* fallback for old browsers */
+    background: #4791FF;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to bottom, 	#c471ed, #4791FF);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to bottom, 	#c471ed, #4791FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     padding: 4%;
@@ -166,7 +245,7 @@ textarea{
     margin-top:10%;
 }
 .contact-info img{
-    margin-bottom: 15%;
+    margin-bottom: 10%;
 }
 .contact-info h2{
     margin-bottom: 10%;
