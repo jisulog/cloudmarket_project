@@ -27,13 +27,6 @@ textarea {
 }
 
 
-/* navbar */
-
-
-.toggle-color {
-    color: #6c757d;
-}
-
 /* post_list */
 .imglist { 
     width: 300px; 
@@ -76,6 +69,7 @@ h5 {
     margin-left: 10px;
     margin-right: 80px;
 }
+
 
 /* mypost, mycomment */
 .styled-table tbody tr:nth-of-type(even):hover{

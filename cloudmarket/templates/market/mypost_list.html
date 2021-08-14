@@ -1,34 +1,36 @@
 {% extends 'base.html' %}
 {% load humanize %}
 {% block content %}
+
 <!--리스트창-->
-    {% if page_obj %} 
-    <div class="container-sm">
-        <table class="styled-table">
-            <thead>
-            <tr>
-                <th colspan="3" class="table-border">{{ user.last_name }}님의 판매 물품({{ mypost|length}})</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for post in page_obj %}
-            <tr class="active-row">
-                <td class="table-no">{{ forloop.counter }}</td>
-                <td class="table-content">
-                    <a href="/market/{{ post.id }}/">{{ post.post_title }}</a></span>
-                </td>
-                <td class="table-price">{{ post.price|intcomma }}원</td>
-            </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </div>
+{% if page_obj %} 
+ <div class="container-sm">
+    <table class="styled-table">
+        <thead>
+        <tr>
+            <th colspan="3" class="table-border">{{ user.last_name }}님의 판매 물품({{ mypost|length}})</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for post in page_obj %}
+        <tr class="active-row">
+            <td class="table-no">{{ forloop.counter }}</td>
+            <td class="table-content">
+                <a href="/market/{{ post.id }}/">{{ post.post_title }}</a></span>
+            </td>
+            <td class="table-price">{{ post.price|intcomma }}원</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+ </div>
 {% else %}
-<div class="no-post-comment">
+ <div class="no-post-comment">
     작성하신 게시글이 없습니다 :(<br>
-        <a href="/market/post/create/">게시글 작성하러 가기!</a>
-</div>
+    <a href="/market/post/create/">게시글 작성하러 가기!</a>
+ </div>
 {% endif %}
+
 <!-- 페이징처리 시작 -->
 <ul class="pagination justify-content-center">
     <!-- 이전페이지 -->
