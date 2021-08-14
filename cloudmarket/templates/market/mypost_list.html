@@ -14,7 +14,7 @@
             {% for post in page_obj %}
             <tr class="active-row">
                 <td class="table-no">{{ forloop.counter }}</td>
-                <td>
+                <td class="table-content">
                     <a href="/market/{{ post.id }}/">{{ post.post_title }}</a></span>
                 </td>
                 <td class="table-price">{{ post.price|intcomma }}원</td>
