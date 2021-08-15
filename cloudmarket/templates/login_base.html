@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <!--custom CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <title>Cloud Market</title>
+</head>
+<body id="bg-gradation">
+    {% include "login_navbar.html" %}
+    {% block content %}
+    {% endblock %}
+    {% block script %}
+        <!-- jQuery JS -->
+        <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+    {% endblock %}
+</body>
+</html>
