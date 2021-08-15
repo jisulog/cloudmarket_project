@@ -380,6 +380,7 @@ hr {
 
 .register-form a{
     color: #fff;
+    text-decoration: underline;
 }
 
 .col-md-8{
